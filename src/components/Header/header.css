@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+header{
+    background: #FFC300;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logo img{
+    padding: 35px 15px;
+    width: 350px;
+}
+
+.search{
+    display: flex;
+    align-items: center;
+    margin: 10px 10px;
+
+}
+
+.search input{
+    width: 35vw;
+    height: 50px;
+    background: #FFFFFF;
+    border: none;
+    text-indent: 25px;
+}
+
+.search button{
+    height: 50px;
+    width: 50px;
+    border: none;
+    background: #FFFFFF;
+    font-weight: 600;
+    transition: .3s;
+    cursor: pointer;
+}
+
+
+.ofertas{
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 38,73px;
+}
+
+.ofertas a{
+    text-decoration: none;
+    color: white;
+}
