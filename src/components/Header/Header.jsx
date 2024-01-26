@@ -1,7 +1,5 @@
 import './header.css';
 
-
-
 function Header() {
 
 return (
@@ -15,8 +13,13 @@ return (
                 <input type="text" name="Busca tu producto" id="" placeholder='Busca tu producto'/>
                 <button><img src="../src/assets/search.png" alt="" srcset="" /></button>
         </div>
-        <div className="ofertas">
-            <a href="/ofertas">Ofertas</a>
+        <div className="btns">
+            <div className="catalogo">
+                <a href="/catalogo">Catálogo</a>
+            </div>
+            <div className="ofertas">
+                <a href="/ofertas">Ofertas</a>
+            </div>
         </div>
     </header>
 )

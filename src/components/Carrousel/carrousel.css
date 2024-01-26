@@ -1,0 +1,8 @@
+.icons{
+    display: flex;
+    padding: 50px 40px;
+}
+
+.icons div img{
+    /* width: 20vw; */
+}

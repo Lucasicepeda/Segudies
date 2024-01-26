@@ -1,0 +1,61 @@
+.banner{
+    background-color: #FFC800;
+    display: flex;
+    gap: 50px;
+    padding: 50px 40px;
+}
+
+.left .texts{
+    padding: 30px 20px 20px;
+}
+
+.left .texts h3{
+    color: #FFF;
+    font-size: 60px;
+    font-weight: 700;
+}
+
+.left .texts h5{
+    color: #FFF;
+    font-weight: 400;
+    font-size: 20px;
+    padding-right: 120px;
+    padding-top: 20px;
+}
+
+.buttons{
+    max-width: fit-content;
+}
+.buttons button {
+    margin: 20px 10px;
+    border-style: solid;
+    border-color: black;
+    width: 165px;
+    height: 40px;
+}
+
+.buttons button a{
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    text-transform: none;
+}
+.buttons .catalogoBtn{
+    background-color: black;
+}
+
+.buttons .destacadosBtn{
+    background-color: #FFC800;
+}
+.destacadosBtn a{
+    color:black
+}
+
+.catalogoBtn a{
+    color: white;
+}
+
+.right img{
+    width: 35vw;
+}
+

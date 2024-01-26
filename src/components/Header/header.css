@@ -1,12 +1,7 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
-}
+
 
 header{
-    background: #FFC300;
+    background: #EDB300;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -42,14 +37,15 @@ header{
     cursor: pointer;
 }
 
-
-.ofertas{
+.btns{
+    display: flex;
+    flex-direction:row;
+    gap: 90px;
+}
+.btns a{
     font-weight: 500;
     font-size: 23px;
     line-height: 38,73px;
-}
-
-.ofertas a{
     text-decoration: none;
     color: white;
 }
