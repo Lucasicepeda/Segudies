@@ -1,8 +1,12 @@
 .icons{
     display: flex;
     padding: 50px 40px;
+    justify-content: center;
+
 }
 
 .icons div img{
     /* width: 20vw; */
+    margin: 30px;
+    height: 45px;
 }

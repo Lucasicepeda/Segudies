@@ -3,9 +3,9 @@ import { routes } from './Routes/routes';
 import Header from './components/Header/Header'; 
 import Banner from './components/Banner/Banner';
 import Carrousel from './components/Carrousel/Carrousel';
-// import Filters from './components/Filters/Filters'
-// import Products from './components/Products/Products'
-// import Footer from './components/Footer/Footer'
+import Filters from './components/Filters/Filters'
+import CardProducto from './components/CardProducto/CardProducto';
+import Footer from './components/Footer/Footer';
 
 
 function App() {
@@ -15,6 +15,11 @@ function App() {
       <Header />
       <Banner />
       <Carrousel />
+      <CardProducto />
+      <Filters />
+      {/* <Products /> */}
+      <Footer />
+
     </>
   )
 }
