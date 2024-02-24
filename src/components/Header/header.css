@@ -1,5 +1,4 @@
 
-
 header{
     background: #EDB300;
     display: flex;
@@ -16,25 +15,29 @@ header{
     display: flex;
     align-items: center;
     margin: 10px 10px;
-
 }
 
 .search input{
-    width: 35vw;
+    width: 30vw;
     height: 50px;
     background: #FFFFFF;
-    border: none;
-    text-indent: 25px;
+    border: 4px white solid;
+    text-indent: 10px;
 }
 
 .search button{
     height: 50px;
     width: 50px;
-    border: none;
+    border: 4px white solid;
     background: #FFFFFF;
     font-weight: 600;
     transition: .3s;
     cursor: pointer;
+}
+
+.search button img{
+    height: 30px;
+    width: 30px;
 }
 
 .btns{

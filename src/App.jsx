@@ -15,8 +15,8 @@ function App() {
       <Header />
       <Banner />
       <Carrousel />
-      <CardProducto />
       <Filters />
+      <CardProducto />
       {/* <Products /> */}
       <Footer />
 

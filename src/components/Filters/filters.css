@@ -1,0 +1,30 @@
+.Filters{
+    display: flex;
+    justify-content: center;
+}
+
+#filtroBusqueda{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px
+}
+
+.text{
+    color: #EDB300;
+    font-weight: 700;
+    margin: 0px 30px;
+}
+
+select[name="selectMarca"], select[name="selectPrecio"]  {
+    border: 2px black solid;
+    font-weight: 700;
+}
+
+input{
+    padding: 2px 15px;
+    border: 3px #EDB300 solid;
+    color: black; 
+    background-color: white;
+    font-weight: 700;
+}
