@@ -10,8 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "google-auth-library": "^9.6.3",
+    "googleapis": "^133.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-google-sheets": "^0.4.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

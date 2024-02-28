@@ -17,7 +17,6 @@ function App() {
       <Carrousel />
       <Filters />
       <CardProducto />
-      {/* <Products /> */}
       <Footer />
 
     </>
