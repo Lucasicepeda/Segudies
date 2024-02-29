@@ -2,27 +2,6 @@ import './cardproducto.css';
 
 function CardProducto() {
 
-    async function getProductos() {
-        let response;
-        try {
-            response = await gapi.client.sheets.spreadsheets.values.get({
-                spreadsheetId: '1PjlBRfdwQmTLgTZCes1evkAWpJL7pvm8CYdxAz6A5J0',
-                range: 'Majors!A:F',
-            });
-        } catch (err) {
-            console.error(err)
-            return;
-        }
-        const range = response.result;
-        if (!range || !range.values || range.values.length == 0) {
-            console.warn("No se encontraron valores")
-            return;
-        }
-        console.log(range.values)
-
-        // https://www.youtube.com/watch?v=GUgf4UmYnHQ 
-        // Minuto 23:15
-    } 
 
 return (
     <div className='cardProducto'>
@@ -38,9 +17,7 @@ return (
                     <div className="cuotas">6 cuotas sin interes de $250</div>
                 </div>
         </div>
-
     </div>
-    
     )
 
 }

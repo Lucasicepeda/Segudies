@@ -11,7 +11,7 @@ return (
         </div>
         <div className="search">
                 <input type="text" name="Busca tu producto" id="" placeholder='Busca tu producto'/>
-                <button><img src="../src/assets/search.png" alt="" srcset="" /></button>
+                <button><img src="../src/assets/search.png"/></button>
         </div>
         <div className="btns">
             <div className="catalogo">
