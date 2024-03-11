@@ -19,7 +19,6 @@ function CardProducto() {
                     <div className="cuotas">6 cuotas sin interes de $250</div>
                 </div>
         </div>
-        Sheets()
     </div>
     )
 

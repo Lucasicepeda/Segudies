@@ -1,6 +1,6 @@
 // TODO(developer): Set to client ID and API key from the Developer Console
-const CLIENT_ID = '422590346966-tld4luop8ehg7utap5n1ni181ksdf2j2.apps.googleusercontent.com';
-const API_KEY = 'AIzaSyDOxPo6B99KI5GG-lioaYrY7cTenaGF6f8';
+const CLIENT_ID = '622227236232-oan2mb90lfghnhg5afm443tf6ad1dkpq.apps.googleusercontent.com';
+const API_KEY = 'AIzaSyA5hgbfTDzuYPSWVND50H-OOf9NXkCKdcM';
 
 // Discovery doc URL for APIs used by the quickstart
 const DISCOVERY_DOC = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
@@ -13,24 +13,20 @@ let tokenClient;
 let gapiInited = false;
 let gisInited = false;
 
-document.getElementById("gapi").addEventListener('load',gapiLoaded());
-document.getElementById("gis").addEventListener('load',gisLoaded());
-
 document.getElementById("authorize_button").style.visibility = 'hidden';
 document.getElementById("signout_button").style.visibility = 'hidden';
 
+document.getElementById("gapi").addEventListener('load',gapiLoaded());
+document.getElementById("gis").addEventListener('load',gisLoaded());
 
-/**
- * Callback after api.js is loaded.
- */
+
+
+/**  * Callback after api.js is loaded.  */
 function gapiLoaded() {
   gapi.load('client', initializeGapiClient);
 }
 
-/**
- * Callback after the API client is loaded. Loads the
- * discovery doc to initialize the API.
- */
+/** Callback after the API client is loaded. Loads the discovery doc to initialize the API. */
 async function initializeGapiClient() {
   await gapi.client.init({
     apiKey: API_KEY,

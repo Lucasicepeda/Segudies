@@ -1,6 +1,6 @@
-export const routes = {
-  home: "/",
-  // producto: '/productos',
+// export const routes = {
+//   home: "/",
+//   // producto: '/productos',
   
-};
+// };
 

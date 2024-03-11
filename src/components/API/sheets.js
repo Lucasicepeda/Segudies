@@ -1,10 +1,5 @@
 
-export function Sheets() {
-
     let productos;
-
-    return (
-
 
         async function getProductos() {
             let response;
@@ -41,7 +36,3 @@ export function Sheets() {
             });
             console.log(productos)
         }
-    )
-
-}
-export default Sheets;
