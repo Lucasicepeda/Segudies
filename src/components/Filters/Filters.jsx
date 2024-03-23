@@ -28,10 +28,8 @@ function Filters() {
                     <input type="submit" value="BUSCAR" />
                 </div>
             </form>
-
         </div>
     )
-
 }
 
 export default Filters;

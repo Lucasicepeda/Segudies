@@ -1,7 +1,6 @@
 import './banner.css';
 
 function Banner() {
-
     return (
         <div className="banner">
             <div className="left">
@@ -22,9 +21,7 @@ function Banner() {
                 <img src="../src/assets/lusqtoff-AMOLADORA.png" alt="" />
             </div>
         </div>
-
     )
-
 }
 
 export default Banner;
