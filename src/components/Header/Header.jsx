@@ -1,4 +1,6 @@
 import './header.css';
+import CartWidget from '../CartWidget'
+
 
 export function Header() {
     return (
@@ -19,6 +21,7 @@ export function Header() {
                 <div className="ofertas">
                     <a href="/ofertas">Ofertas</a>
                 </div>
+                <div><CartWidget /></div>
             </div>
         </header>
     )

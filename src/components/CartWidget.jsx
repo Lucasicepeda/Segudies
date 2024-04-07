@@ -9,8 +9,9 @@ const CartWidget = () => {
   return (
     <div>
         <Link className="menu-link" to="/carrito">
-            Carrito
-            <span className="numerito">{cantidadEnCarrito()}</span>
+        <img src="src/assets/shopping-cart-outline-svgrepo-com.svg" alt="" style={{ width: "25px", fill: "white" }}/>
+
+        <span className="numerito"> {cantidadEnCarrito()}</span>
         </Link>
     </div>
   )
