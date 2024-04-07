@@ -1,6 +1,6 @@
 import './banner.css';
 
-function Banner() {
+export function Banner() {
     return (
         <div className="banner">
             <div className="left">
@@ -23,5 +23,3 @@ function Banner() {
         </div>
     )
 }
-
-export default Banner;

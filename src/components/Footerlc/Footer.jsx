@@ -1,6 +1,6 @@
 import './footer.css';
 
-function Footer() {
+export function Footer() {
     return (
         <footer>
             <div className="redes">
@@ -27,5 +27,3 @@ function Footer() {
         </footer>
     )
 }
-
-export default Footer;

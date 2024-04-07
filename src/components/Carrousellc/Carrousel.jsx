@@ -1,6 +1,6 @@
 import './carrousel.css';
 
-function Carrousel() {
+export function Carrousel() {
 
 return (
         <div className='icons'>
@@ -20,5 +20,3 @@ return (
     )
 
 }
-
-export default Carrousel;

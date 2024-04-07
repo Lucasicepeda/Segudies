@@ -1,6 +1,6 @@
 import './cardproducto.css';
 
-function CardProducto() {
+export function CardProducto() {
     return (
         <div className='cardProducto'>
             <div>
@@ -18,5 +18,3 @@ function CardProducto() {
         </div>
     )
 }
-
-export default CardProducto;

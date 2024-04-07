@@ -1,6 +1,6 @@
 import './filters.css';
 
-function Filters() {
+export function Filters() {
 
     return (
         <div className="Filters">
@@ -31,5 +31,3 @@ function Filters() {
         </div>
     )
 }
-
-export default Filters;
