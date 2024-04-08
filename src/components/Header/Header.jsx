@@ -1,28 +1,28 @@
 import './header.css';
 import CartWidget from '../CartWidget'
+import { Link } from 'react-router-dom'
 
-
-export function Header() {
+const Header = () => {
     return (
         <header>
-            <div className="logo">
-                <a href="/">
-                    <img src='../src/assets/logo.png' alt='logo' />
-                </a>
-            </div>
+            <Link to="/" className="logo">
+                <img src='../src/assets/logo.png' alt='logo' />
+            </Link>
             <div className="search">
                 <input type="text" name="Busca tu producto" id="" placeholder='Busca tu producto' />
                 <button><img src="../src/assets/search.png" /></button>
             </div>
             <div className="btns">
                 <div className="catalogo">
-                    <a href="/catalogo">Catálogo</a>
+                    <Link className="menu-link" to="/catalogo"><a href="/catalogo">Catálogo</a></Link>
                 </div>
                 <div className="ofertas">
-                    <a href="/ofertas">Ofertas</a>
+                    <Link className="menu-link" to="/ofertas"><a href="/ofertas">Ofertas</a></Link>
                 </div>
                 <div><CartWidget /></div>
             </div>
         </header>
     )
 }
+
+export default Header;

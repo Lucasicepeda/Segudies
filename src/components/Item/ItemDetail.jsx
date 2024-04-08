@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
-import { toCapital } from "../helpers/toCapital"
-import ItemCount from "./ItemCount"
-import { CartContext } from "../context/CartContext";
+import { toCapital } from "../../helpers/toCapital"
+import ItemCount from "../ItemCount"
+import { CartContext } from "../../context/CartContext";
 
 
 const ItemDetail = ( {item} ) => {
@@ -16,7 +16,7 @@ const ItemDetail = ( {item} ) => {
     }
 
     const handleSumar = () => {
-        cantidad < item.stock && setCantidad(cantidad + 1)
+      setCantidad(cantidad + 1);
     }
 
   return (
@@ -26,7 +26,7 @@ const ItemDetail = ( {item} ) => {
             <div>
                 <h3 className="titulo">{item.titulo}</h3>
                 <p className="descripcion">{item.descripcion}</p>
-                <p className="categoria">Categoría: {toCapital(item.categoria)}</p>
+                <p className="marca">Marca: {toCapital(item.marca)}</p>
                 <p className="precio">${item.precio}</p>
                 <ItemCount
                   cantidad={cantidad}

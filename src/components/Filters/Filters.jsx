@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
 import './filters.css';
 
-export function Filters() {
+
+const Filters = () => {
 
     return (
         <div className="Filters">
@@ -11,10 +13,10 @@ export function Filters() {
                 <div className="ordenMarca">
                     <select name="selectMarca" defaultValue="">
                         <option value="" disabled hidden>Marca:</option>
-                        <option data-count="1" value="Libus">Libus</option>
-                        <option data-count="23" value="Bremen">Bremen</option>
-                        <option data-count="433" value="Truper">Truper</option>
-                        <option data-count="45" value="Luqstoff">Luqstoff</option>
+                        <option data-count="1" value="Libus"><Link to="/productos/:Libus">Libus</Link></option>
+                        <option data-count="2" value="Bremen"><Link to="/productos/:Bremen">Bremen</Link></option>
+                        <option data-count="3" value="Truper"><Link to="/productos/:Truper">Truper</Link></option>
+                        <option data-count="4" value="Luqstoff"><Link to="/productos/:Luqstoff">Luqstoff</Link></option>
                     </select>
                 </div>
                 <div className="ordenPrecio">
@@ -31,3 +33,5 @@ export function Filters() {
         </div>
     )
 }
+
+export default Filters;

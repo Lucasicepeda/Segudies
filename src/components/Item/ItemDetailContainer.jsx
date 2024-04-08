@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../firebase/config";
+import { db } from "../../firebase/config";
 
 
 const ItemDetailContainer = () => {
@@ -22,7 +22,6 @@ const ItemDetailContainer = () => {
 
     }, [id])
     
-
   return (
     <div>
         {item && <ItemDetail item={item} />}

@@ -14,11 +14,13 @@
     color: #EDB300;
     font-weight: 700;
     margin: 0px 30px;
+    font-size: 22px;
 }
 
 select[name="selectMarca"], select[name="selectPrecio"]  {
     border: 2px black solid;
     font-weight: 700;
+    font-size: 20px;
 }
 
 input{
@@ -27,4 +29,5 @@ input{
     color: black; 
     background-color: white;
     font-weight: 700;
+    font-size: 20px;
 }

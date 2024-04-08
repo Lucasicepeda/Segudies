@@ -6,7 +6,11 @@
 }
 
 .icons div img{
-    /* width: 20vw; */
     margin: 30px;
-    height: 45px;
+    height: 35px;
+    width: auto;
 }
+/* 
+.icons div{
+    padding: 0px 10px;
+} */

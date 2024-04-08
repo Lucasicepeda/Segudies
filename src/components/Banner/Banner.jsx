@@ -1,6 +1,7 @@
 import './banner.css';
+import { Link } from 'react-router-dom'
 
-export function Banner() {
+const Banner = () => {
     return (
         <div className="banner">
             <div className="left">
@@ -10,10 +11,10 @@ export function Banner() {
                 </div>
                 <div className="buttons">
                     <button className='catalogoBtn'>
-                        <a href="/catalogo">Ver catálogo</a>
+                        <Link className="menu-link" to="/catalogo">Ver Catálogo</Link>
                     </button>
                     <button className='destacadosBtn'>
-                        <a href="/catalogo">Destacados</a>
+                        <Link className="menu-link" to="/ofertas">Destacados</Link>    
                     </button>
                 </div>
             </div>
@@ -23,3 +24,5 @@ export function Banner() {
         </div>
     )
 }
+
+export default Banner;

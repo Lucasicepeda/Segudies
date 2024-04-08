@@ -2,12 +2,14 @@
 header{
     background: #EDB300;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    padding: 50px 7.5vw;
+
 }
 
 .logo img{
-    padding: 35px 15px;
+    /* padding: 35px 15px; */
     width: 350px;
 }
 
@@ -19,15 +21,16 @@ header{
 
 .search input{
     width: 30vw;
-    height: 50px;
+    height: 45px;
     background: #FFFFFF;
     border: 4px white solid;
-    text-indent: 10px;
+    text-indent: 8px;
+    font-size: 16px;
 }
 
 .search button{
-    height: 50px;
-    width: 50px;
+    height: 45px;
+    width: 45px;
     border: 4px white solid;
     background: #FFFFFF;
     font-weight: 600;

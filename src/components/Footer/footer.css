@@ -2,8 +2,10 @@
 footer{
     background: #EDB300;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    padding: 0px 7.5vw;
+
 }
 .redes{
     display: flex;
