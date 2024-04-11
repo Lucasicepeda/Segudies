@@ -7,11 +7,11 @@ const Header = () => {
     return (
         <header>
             <Link to="/" className="logo">
-                <img src='./assets/logo.png' alt='logo' />
+                <img src='src\components\Header\logo.png' alt='logo' />
             </Link>
             <div className="search">
                 <input type="text" name="Busca tu producto" id="" placeholder='Busca tu producto' />
-                <button><img src="src/assets/search.png" /></button>
+                <button><img src="src\components\Header\search.png" /></button>
             </div>
             <div className="btns">
                 <div className="catalogo">
