@@ -2,15 +2,16 @@ import './header.css';
 import CartWidget from '../CartWidget'
 import { Link } from 'react-router-dom'
 
+
 const Header = () => {
     return (
         <header>
             <Link to="/" className="logo">
-                <img src='../src/assets/logo.png' alt='logo' />
+                <img src='./assets/logo.png' alt='logo' />
             </Link>
             <div className="search">
                 <input type="text" name="Busca tu producto" id="" placeholder='Busca tu producto' />
-                <button><img src="../src/assets/search.png" /></button>
+                <button><img src="src/assets/search.png" /></button>
             </div>
             <div className="btns">
                 <div className="catalogo">
