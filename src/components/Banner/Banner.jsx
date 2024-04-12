@@ -1,5 +1,6 @@
 import './banner.css';
 import { Link } from 'react-router-dom'
+import amoladora from '../../assets/amoladora.png'
 
 const Banner = () => {
     return (
@@ -19,7 +20,7 @@ const Banner = () => {
                 </div>
             </div>
             <div className="right">
-                <img src="../src/assets/lusqtoff-AMOLADORA.png" alt="" />
+                <img src={amoladora} alt="Amoladora Luqstoff" />
             </div>
         </div>
     )
