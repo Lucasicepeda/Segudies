@@ -1,7 +1,7 @@
 import './footer.css';
-import insta from '../../assets/insta.png';
-import face from '../../assets/face.png';
-import logoF from '../../assets/logoFooter.png';
+import insta from './images/insta.png';
+import face from './images/face.png';
+import logoF from './images/logoFooter.png';
 
 const Footer = () => {
     return (
