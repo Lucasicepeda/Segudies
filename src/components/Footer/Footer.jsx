@@ -1,14 +1,17 @@
 import './footer.css';
+import insta from '../../assets/insta.png';
+import face from '../../assets/face.png';
+import logoF from '../../assets/logoFooter.png';
 
 const Footer = () => {
     return (
         <footer>
             <div className="redes">
                 <a href="/">
-                    <img src='../src/assets/Insta.png' alt='Instagram' />
+                    <img src={insta} alt='Instagram' />
                 </a>
                 <a href="/">
-                    <img src='../src/assets/Face.png' alt='Facebook' />
+                    <img src={face} alt='Facebook' />
                 </a>
             </div>
             <div className="formOfertas">
@@ -21,7 +24,7 @@ const Footer = () => {
             </div>
             <div className="logoFooter">
                 <a href="/">
-                    <img src='../src/assets/segudiesLogoFooter.png' alt='logoFooter' />
+                    <img src={logoF} alt='logoFooter' />
                 </a>
             </div>
         </footer>
