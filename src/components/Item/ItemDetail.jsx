@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import { toCapital } from "../../helpers/toCapital"
-import ItemCount from "../ItemCount"
+import ItemCount from "./ItemCount"
 import { CartContext } from "../../context/CartContext";
-
+import './itemDetail.css'
 
 const ItemDetail = ( {item} ) => {
 
@@ -23,11 +23,13 @@ const ItemDetail = ( {item} ) => {
     <div className="container">
         <div className="producto-detalle">
             <img src={item.imagen} alt={item.titulo} />
-            <div>
+            <div className="producto-detalle-container">
+              <div className="detalles-container">
                 <h3 className="titulo">{item.titulo}</h3>
                 <p className="descripcion">{item.descripcion}</p>
                 <p className="marca">Marca: {toCapital(item.marca)}</p>
                 <p className="precio">${item.precio}</p>
+              </div>
                 <ItemCount
                   cantidad={cantidad}
                   handleSumar={handleSumar}

@@ -20,9 +20,9 @@ const Carrito = () => {
                     <img className="imgItemCarrito" src={prod.imagen} alt="prod.imagen"/>
                     <div className="infoItemCarrito">
                         <h3>{prod.titulo}</h3>
-                        <p>Precio unit: ${prod.precio}</p>
-                        <p>Precio total: ${prod.precio * prod.cantidad}</p>
-                        <p>Cant: {prod.cantidad}</p>
+                        <p>Precio unitario:  ${prod.precio}</p>
+                        <p>Precio total:  ${prod.precio * prod.cantidad}</p>
+                        <p>Cantidad: {prod.cantidad}</p>
                     </div>
                 </div>
             ))
@@ -31,13 +31,13 @@ const Carrito = () => {
         {  
             carrito.length > 0 ?
             <>
-                <h2>Precio total: ${precioTotal()}</h2>
+                <h2 className='precioTotal'>Precio total: ${precioTotal()}</h2>
                 <div className='btnsComprar'>
-                    <button onClick={handleVaciar}>Vaciar</button>
-                    <Link to="/checkout"><button>Finalizar compra</button></Link>
+                    <button onClick={handleVaciar} className='btn-vaciar'>Vaciar</button>
+                    <Link to="/checkout"><button className='btn-finalizar-compra'>Finalizar compra</button></Link>
                 </div>
             </> :
-            <h2>El carrito está vacío :(</h2>
+            <h2 className='carritoVacio'>El carrito está vacío :(</h2>
         }
         
     </div>

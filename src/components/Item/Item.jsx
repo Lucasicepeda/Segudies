@@ -6,7 +6,6 @@ const Item = ( {producto} ) => {
   return (
     <div className="producto">
         <img src={producto.imagen} alt={producto.titulo} />
-        {/* <img src="../src/assets/Products/sierraBremen.png" alt={producto.titulo} /> */}
         <div>
         <Link className="nameProduct" to={`/item/${producto.id}`}>
           <h4 >{producto.titulo}</h4>
