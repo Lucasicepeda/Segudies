@@ -1,6 +1,8 @@
+import './Header/header.css';
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { CartContext } from '../context/CartContext';
+import carrito from '../assets/shopping-cart.svg'
 
 const CartWidget = () => {
 
@@ -9,7 +11,7 @@ const CartWidget = () => {
   return (
     <div>
       <Link className="menu-link" to="/carrito">
-        <img src="./assets/shopping-cart-outline-svgrepo-com.svg" alt="" style={{ width: "25px", fill: "white" }} />
+        <img src={carrito} alt="carrito"/>
         <span className="numerito"> {cantidadEnCarrito()}</span>
       </Link>
     </div>

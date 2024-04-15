@@ -1,34 +1,36 @@
 import './carrousel.css';
 
-import bremen from './images/bremen.png'
-import daihatsu from './images/daihatsu.png'
-import libus from './images/libus.png'
-import lusqtoff from './images/lusqtoff.png'
-import truper from './images/truper.png'
+import bremen from './logos/bremen.png'
+import daihatsu from './logos/daihatsu.png'
+import libus from './logos/libus.png'
+import lusqtoff from './logos/lusqtoff.png'
+import truper from './logos/truper.png'
+import tresM from './logos/3m.svg'
 
 
 const Carrousel = () => {
 
-
-    
-return (
-        <div className='icons'>
-            <div className="icon2">
+    return (
+        <div className="logos">
+            <div className="logos-slide">
+                <img src={tresM} alt="3M" />
                 <img src={truper} alt="truper" />
-            </div>
-            <div className="icon5">
-                <img src={bremen} alt="Bremen"  />
-            </div>
-            <div className="icon3">
+                <img src={bremen} alt="Bremen" />
                 <img src={daihatsu} alt="Daihatsu" />
+                <img src={libus} alt="libus" />
+                <img src={lusqtoff} alt="Lusqtoff" />
             </div>
-            <div className="icon4">
-                <img src={libus} alt="libus"  />
-            </div>
-            <div className="icon1">
+
+            <div className="logos-slide">
+                <img src={tresM} alt="3M" />
+                <img src={truper} alt="truper" />
+                <img src={bremen} alt="Bremen" />
+                <img src={daihatsu} alt="Daihatsu" />
+                <img src={libus} alt="libus" />
                 <img src={lusqtoff} alt="Lusqtoff" />
             </div>
         </div>
+
     )
 
 }

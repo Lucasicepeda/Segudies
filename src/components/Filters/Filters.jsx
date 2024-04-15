@@ -13,10 +13,11 @@ const Filters = () => {
                 <div className="ordenMarca">
                     <select name="selectMarca" defaultValue="">
                         <option value="" disabled hidden>Marca:</option>
-                        <option data-count="1" value="Libus"><Link to="/productos/:Libus">Libus</Link></option>
-                        <option data-count="2" value="Bremen"><Link to="/productos/:Bremen">Bremen</Link></option>
-                        <option data-count="3" value="Truper"><Link to="/productos/:Truper">Truper</Link></option>
-                        <option data-count="4" value="Luqstoff"><Link to="/productos/:Luqstoff">Luqstoff</Link></option>
+                        <option data-count="1" value="Libus">Libus</option>
+                        <option data-count="2" value="Bremen">Bremen</option>
+                        <option data-count="3" value="Truper">Truper</option>
+                        <option data-count="4" value="Luqstoff">Luqstoff</option>
+                        {/* <option data-count="4" value="Luqstoff"><Link to="/productos/:Luqstoff">Luqstoff</Link></option> */}
                     </select>
                 </div>
                 <div className="ordenPrecio">
@@ -26,7 +27,7 @@ const Filters = () => {
                         <option value="mayorPrecio">Mayor precio</option>
                     </select>
                 </div>
-                <div className="Buscar">
+                <div className="buscar-btn">
                     <input type="submit" value="BUSCAR" />
                 </div>
             </form>

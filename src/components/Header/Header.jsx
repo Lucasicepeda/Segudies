@@ -17,10 +17,12 @@ const Header = () => {
             </div>
             <div className="btns">
                 <div className="catalogo">
-                    <Link className="menu-link" to="/catalogo"><a href="/catalogo">Catálogo</a></Link>
+                    <Link className="menu-link" to="/catalogo">Catálogo</Link>
+
                 </div>
                 <div className="ofertas">
-                    <Link className="menu-link" to="/ofertas"><a href="/ofertas">Ofertas</a></Link>
+                    <Link className="menu-link" to="/ofertas">Ofertas</Link>
+
                 </div>
                 <div><CartWidget /></div>
             </div>

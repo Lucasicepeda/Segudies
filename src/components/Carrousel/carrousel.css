@@ -1,16 +1,38 @@
-.icons{
-    display: flex;
-    padding: 50px 40px;
-    justify-content: center;
 
-}
+@keyframes slide {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .logos {
+    overflow: hidden;
+    padding: 80px 0;
+    background: white;
+    white-space: nowrap;
+    position: relative;
+  }
+  
+  .logos:before,
+  .logos:after {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    content: "";
+    z-index: 2;
+  }
 
-.icons div img{
-    margin: 30px;
-    height: 35px;
-    width: auto;
-}
-/* 
-.icons div{
-    padding: 0px 10px;
-} */
+  
+  .logos-slide {
+    display: inline-block;
+    animation: 20s slide infinite linear;
+  }
+  
+  .logos-slide img {
+    height: 30px;
+    margin: 0 40px;
+  }

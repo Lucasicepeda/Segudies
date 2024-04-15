@@ -4,13 +4,13 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 50px 7.5vw;
+    padding: 30px 7.5vw
 
 }
 
 .logo img{
     /* padding: 35px 15px; */
-    width: 350px;
+    width: 300px;
 }
 
 .search{
@@ -20,17 +20,21 @@ header{
 }
 
 .search input{
-    width: 30vw;
-    height: 45px;
+    width: 27vw;
+    height: 40px;
     background: #FFFFFF;
     border: 4px white solid;
     text-indent: 8px;
     font-size: 16px;
 }
 
+.search input::placeholder{
+    padding-left: 10px;
+}
+
 .search button{
-    height: 45px;
-    width: 45px;
+    height: 40px;
+    width: 40px;
     border: 4px white solid;
     background: #FFFFFF;
     font-weight: 600;
@@ -39,14 +43,14 @@ header{
 }
 
 .search button img{
-    height: 30px;
-    width: 30px;
+    height:25px;
+    width: 25px;
 }
 
 .btns{
     display: flex;
     flex-direction:row;
-    gap: 90px;
+    gap: 4vw;
 }
 .btns a{
     font-weight: 500;
@@ -54,4 +58,10 @@ header{
     line-height: 38,73px;
     text-decoration: none;
     color: white;
+}
+
+.menu-link{
+    display: flex;
+    gap: 5px;
+    align-content: center;
 }

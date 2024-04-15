@@ -23,7 +23,7 @@ select[name="selectMarca"], select[name="selectPrecio"]  {
     font-size: 20px;
 }
 
-input{
+.buscar-btn input{
     padding: 2px 15px;
     border: 3px #EDB300 solid;
     color: black; 

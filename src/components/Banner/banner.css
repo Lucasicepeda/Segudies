@@ -39,6 +39,8 @@
     font-size: 15px;
     text-decoration: none;
     text-transform: none;
+    display: flex;
+    justify-content: center;
 }
 .buttons .catalogoBtn{
     background-color: black;
