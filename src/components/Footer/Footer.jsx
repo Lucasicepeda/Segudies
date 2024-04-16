@@ -1,6 +1,7 @@
 import './footer.css';
 import insta from './images/insta.png';
 import face from './images/face.png';
+import logo from '../../assets/logo.png';
 import logoF from './images/logoFooter.png';
 
 const Footer = () => {
@@ -24,7 +25,7 @@ const Footer = () => {
             </div>
             <div className="logoFooter">
                 <a href="/">
-                    <img src={logoF} alt='logoFooter' />
+                    <img src={logo} alt='logoFooter' />
                 </a>
             </div>
         </footer>
