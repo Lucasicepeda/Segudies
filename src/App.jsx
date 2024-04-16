@@ -13,12 +13,14 @@ import Carrito from "./components/Carrito";
 import Checkout from "./components/Checkout";
 import Contacto from "./components/Contacto";
 import Nosotros from "./components/Nosotros";
+import { SpeedInsights } from "@vercel/speed-insights/react"
+
 
 function App() {
 
   return (
     <CartProvider>
-
+      <SpeedInsights/>
       <BrowserRouter>
 
         <Header />
