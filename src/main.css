@@ -97,7 +97,7 @@ hr {
     padding-block: 2rem;
     display: flex;
     grid-template-columns: 1fr 2fr;
-    gap: 2rem;
+    gap: 4rem;
     width: 80vw;
     padding: 10vh 0;
 
