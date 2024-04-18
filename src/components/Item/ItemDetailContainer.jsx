@@ -12,7 +12,7 @@ const ItemDetailContainer = () => {
 
     useEffect(() => {
 
-      const docRef = doc(db, "productos", id);
+      const docRef = doc(db, "productsListPrueba", id);
       getDoc(docRef)
         .then((resp) => {
           setItem(

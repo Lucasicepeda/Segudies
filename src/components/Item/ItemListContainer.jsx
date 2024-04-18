@@ -14,7 +14,7 @@ const ItemListContainer = () => {
 
     useEffect(() => {
 
-      const productosRef = collection(db, "productos");
+      const productosRef = collection(db, "productsListPrueba");
       const q = marca ? query(productosRef, where("marca", "==", marca)) : productosRef;
 
       getDocs(q)
@@ -38,3 +38,4 @@ const ItemListContainer = () => {
 }
 
 export default ItemListContainer
+

@@ -9,7 +9,6 @@ import './itemDetail.css'
 const ItemDetail = ({ item }) => {
 
   const { carrito, agregarAlCarrito } = useContext(CartContext);
-  console.log(carrito);
 
   const [cantidad, setCantidad] = useState(1);
   const [imagenIndex, setImagenIndex] = useState(0);
@@ -34,12 +33,12 @@ const ItemDetail = ({ item }) => {
     <div className="container">
       <div className="producto-detalle">
         <div className="imagenes-container">
-          {item.images.map((image, index) => (
+        {Object.values(item.images).map((image, index) => (
             <img
               key={index}
               src={image}
               alt={`imagen-${index}`}
-              className={index === imagenIndex ? "imagen-visible" : ""}
+              className={index === imagenIndex ? "imagen-visible" : "no-image"}
             />
           ))}
         </div>
