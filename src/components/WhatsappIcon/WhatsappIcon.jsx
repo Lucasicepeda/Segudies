@@ -6,7 +6,7 @@ import icon from '../../assets/whatsapp.svg'
 
 function WhatsappIcon() {
   return (
-    <Link to="https://api.whatsapp.com/send?phone=+5491162637388" className="btn-wsp" target="_blank">
+    <Link to="https://wa.me/+5491162637388" className="btn-wsp" target="_blank">
 	    <img className="wsp-img" src={icon} alt="whatsapp"/>
     </Link>
   )
