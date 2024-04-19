@@ -31,13 +31,13 @@
     position: relative;
     width: 400px;
     height: auto;
+    /* border-radius: 15px; 
+    box-shadow: 0px 0px 10px rgba(75, 74, 74, 0.39);*/
   }
   
   .imagenes-container img {
     width: 400px;
     height: auto;
-    box-shadow: 0px 0px 25px rgba(75, 74, 74, 0.39);
-    border-radius: 15px;
   }
   .no-image{
     display: none;
@@ -49,20 +49,19 @@
   .botones-container {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-    width: 400px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
   
   .boton {
     background-color: #ffffff00;
     border: 0px solid #ccc; 
     border-radius: 5px;
-    margin: 0 10px;
     cursor: pointer;    
+    margin: 0 10px;
   }
-  .botones-container .boton img {
+  .boton img {
     width: 18px;
   }
-

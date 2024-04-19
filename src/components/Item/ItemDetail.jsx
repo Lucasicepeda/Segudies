@@ -41,14 +41,14 @@ const ItemDetail = ({ item }) => {
               className={index === imagenIndex ? "imagen-visible" : "no-image"}
             />
           ))}
-        </div>
-        <div className="botones-container">
-          <button className="boton" onClick={mostrarImagenAnterior}>
-            <img src={chevronLeft} alt="Anterior" />
-          </button>
-          <button className="boton" onClick={mostrarSiguienteImagen}>
-            <img src={chevronRight} alt="Siguiente" />
-          </button>
+          <div className="botones-container">
+            <button className="boton" onClick={mostrarImagenAnterior}>
+              <img src={chevronLeft} alt="Anterior" />
+            </button>
+            <button className="boton" onClick={mostrarSiguienteImagen}>
+              <img src={chevronRight} alt="Siguiente" />
+            </button>
+          </div>
         </div>
         <div className="producto-detalle-container">
           <div className="detalles-container">

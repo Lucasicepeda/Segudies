@@ -1,6 +1,10 @@
 .Filters{
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    max-width: 85vw;
+    padding-inline: 1.5rem;
+    margin: 0 auto;
 }
 
 #filtroBusqueda{
