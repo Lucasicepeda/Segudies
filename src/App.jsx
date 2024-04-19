@@ -11,6 +11,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { CartProvider } from "./context/CartContext";
 import Carrito from "./components/Carrito";
 import Checkout from "./components/Checkout";
+import WhatsappIcon from './components/WhatsappIcon/WhatsappIcon.jsx';
 // import Contacto from "./components/Contacto";
 // import Nosotros from "./components/Nosotros";
 import { SpeedInsights } from "@vercel/speed-insights/react"
@@ -25,6 +26,7 @@ function App() {
 
         <Header />
 
+        <WhatsappIcon/>
         <Routes>
           <Route path='/' element={<>
             <Banner />
