@@ -26,13 +26,13 @@
     z-index: 2;
   }
 
-  
+
   .logos-slide {
     display: inline-block;
     animation: 30s slide infinite linear;
   }
   
   .logos-slide img {
-    height: 30px;
+    height: 35px;
     margin: 0 40px;
   }

@@ -20,8 +20,6 @@ const Filters = () => {
                 const productosData = resp.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
                 const marcasUnicas = [...new Set(productosData.map((producto) => producto.marca))];
                 setMarcas(marcasUnicas);
-
-                // Si hay una marca seleccionada, filtrar los productos
                 if (marcaSeleccionada) {
                     const productosFiltrados = productosData.filter(producto => producto.marca === marcaSeleccionada);
                     setProductosFiltrados(productosFiltrados);
@@ -71,9 +69,13 @@ const Filters = () => {
                 </form>
             </div>
             <div className="productos">
-                {productosFiltrados.map((producto) => (
-                    <Item key={producto.id} producto={producto} />
-                ))}
+                {productosFiltrados.length === 0 ? (
+                    <p>No existen productos de la marca {marcaSeleccionada}</p>
+                ) : (
+                    productosFiltrados.map((producto) => (
+                        <Item key={producto.id} producto={producto} />
+                    ))
+                )}
             </div>
         </div>
     )
