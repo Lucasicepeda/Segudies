@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { CartContext } from '../context/CartContext'
 import { Link } from 'react-router-dom';
+import atrasBtn from "../assets/atrasBtn.svg"
 
 const Carrito = () => {
 
@@ -11,7 +12,10 @@ const Carrito = () => {
     }
 
   return (
+    <>
+        <Link to="/"><img className="atras-btn" src={atrasBtn} alt="atras"/></Link>    
     <div className="container container-carrito">
+
         <h1 className="main-title">Carrito</h1>
 
         {
@@ -41,6 +45,7 @@ const Carrito = () => {
         }
         
     </div>
+    </>
   )
 }
 

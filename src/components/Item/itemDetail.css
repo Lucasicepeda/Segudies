@@ -65,3 +65,8 @@
   .boton img {
     width: 18px;
   }
+
+  .atras-btn{
+    width: 50px;
+    margin: 20px 0px 0px 30px;
+  }

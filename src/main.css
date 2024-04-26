@@ -82,7 +82,7 @@
     text-decoration:none;
 }
 
-.producto > img {
+.producto .img-producto {
     width: 100%;
     object-fit: cover;
     border-radius: 1rem;
@@ -99,7 +99,7 @@ hr {
     grid-template-columns: 1fr 2fr;
     gap: 4rem;
     width: 80vw;
-    padding: 10vh 0;
+    padding: 3vh 0 8vh 0;
 
 }
 
