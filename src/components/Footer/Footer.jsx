@@ -15,14 +15,14 @@ const Footer = () => {
                     <img src={face} alt='Facebook' />
                 </a>
             </div>
-            <div className="formOfertas">
+            {/* <div className="formOfertas">
                 <p>Dejanos tu contacto y recibí las mejores ofertas</p>
                 <input type="mail" name="mailOfertas" id="" placeholder='ejemplo@gmail.com' />
                 <button className='mailOfertas'>
                     <a href="/??">Enviar </a>
                 </button>
 
-            </div>
+            </div> */}
             <div className="logoFooter">
                 <a href="/">
                     <img src={logo} alt='logoFooter' />

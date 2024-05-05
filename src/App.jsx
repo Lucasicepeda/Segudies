@@ -15,6 +15,7 @@ import WhatsappIcon from './components/WhatsappIcon/WhatsappIcon.jsx';
 // import Contacto from "./components/Contacto";
 // import Nosotros from "./components/Nosotros";
 import { SpeedInsights } from "@vercel/speed-insights/react"
+import Buscador from './components/Buscador.jsx';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
     <CartProvider>
       <SpeedInsights/>
       <BrowserRouter>
+        {/* <Buscador /> */}
 
         <Header />
 

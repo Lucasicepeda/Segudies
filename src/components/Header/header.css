@@ -13,13 +13,12 @@ header{
     width: 280px;
 }
 
-.search{
+.search-box{
     display: flex;
     align-items: center;
-    margin: 10px 10px;
 }
 
-.search input{
+.search-box input{
     width: 27vw;
     height: 40px;
     background: #FFFFFF;
@@ -28,11 +27,11 @@ header{
     font-size: 16px;
 }
 
-.search input::placeholder{
+.search-box input::placeholder{
     padding-left: 10px;
 }
 
-.search button{
+.search-box button{
     height: 40px;
     width: 40px;
     border: 4px white solid;
@@ -42,7 +41,7 @@ header{
     cursor: pointer;
 }
 
-.search button img{
+.search-box button img{
     height:25px;
     width: 25px;
 }
@@ -64,4 +63,24 @@ header{
     display: flex;
     gap: 5px;
     align-content: center;
+}
+
+.search-container {
+    margin: 10px 10px;
+    position: relative;
+}
+
+.results{
+    background-color: #FFFFFF;
+    border-radius: 0px 0px 5px 5px;
+    position: absolute;
+    width: 100%;
+    max-height: 40vh;
+    box-shadow: 4px 7px 18px 0px rgba(0,0,0,0.38);
+    overflow-y: auto;
+}
+
+.results li{
+    list-style: none;
+    padding: 5px 10px;
 }
