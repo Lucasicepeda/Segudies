@@ -225,7 +225,7 @@ const Filters = () => {
             </div>
             {/* Paginación */}
             {productosFiltrados.length > productsPerPage && (
-                <ul className="pagination">
+                <ul className="paginador">
                     {Array.from({ length: Math.ceil(productosFiltrados.length / productsPerPage) }).map((_, index) => (
                         <li key={index} className={currentPage === index + 1 ? "active" : ""}>
                             <button onClick={() => paginate(index + 1)}>{index + 1}</button>

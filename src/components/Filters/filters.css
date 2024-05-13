@@ -35,3 +35,35 @@ select[name="selectMarca"], select[name="selectPrecio"]  {
     font-weight: 700;
     font-size: 20px;
 }
+
+
+.paginador{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 20px 0px;
+    gap: 10px;
+}
+
+
+.paginador li button{
+    background-color: #ffffff;
+    border: 0;
+    width: 2rem;
+    height: 2rem;
+    color: black;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1;
+    border: 2px solid #FFC800;
+    transition: .2s;
+}
+
+.paginador li.active button{
+    background-color: #FFC800;
+
+}
