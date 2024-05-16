@@ -6,7 +6,7 @@ import Carrousel from './components/Carrousel/Carrousel';
 import Filters from './components/Filters/Filters.jsx';
 import Footer from './components/Footer/Footer';
 import ItemDetailContainer from "./components/Item/ItemDetailContainer";
-// import ItemListContainer from "./components/Item/FUERA DE USOOO/ItemListContainer.jsx";
+import ItemListContainer from "./components/Item/ItemListContainer.jsx";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { CartProvider } from "./context/CartContext";
 import Carrito from "./components/Carrito";
@@ -24,21 +24,17 @@ function App() {
     <CartProvider>
       <SpeedInsights/>
       <BrowserRouter>
-        {/* <Buscador /> */}
-
         <Header />
-
         <WhatsappIcon/>
         <Routes>
           <Route path='/' element={<>
             <Banner />
             <Carrousel />
             <Filters />
-            {/* <ItemListContainer /> */}
           </>} />
           <Route path="/item/:id" element={<ItemDetailContainer />} /> 
           {/* <Route path="/productos" element={<ItemListContainer />} /> */}
-          {/* <Route path="/productos/:marca" element={<ItemListContainer />} /> */}
+          <Route path="/productos/:marca" element={<ItemListContainer />} />
           {/* <Route path="/nosotros" element={<Nosotros />} /> */}
           {/* <Route path="/contacto" element={<Contacto />} /> */}
           <Route path="/carrito" element={<Carrito />} />

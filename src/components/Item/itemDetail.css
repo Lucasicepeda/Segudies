@@ -70,3 +70,9 @@
     width: 50px;
     margin: 20px 0px 0px 30px;
   }
+
+  p.notProduct{
+    font-size: 30px;
+    text-align: center;
+    margin: 10vh auto;
+  }

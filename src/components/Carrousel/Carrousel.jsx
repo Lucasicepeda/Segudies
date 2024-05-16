@@ -12,12 +12,12 @@ import { Link } from 'react-router-dom';
 
 const images = [
   { src: tresM, alt: '3M' },
-  { src: truper, alt: 'truper' },
+  { src: truper, alt: 'Truper' },
   { src: bremen, alt: 'Bremen' },
   { src: daihatsu, alt: 'Daihatsu' },
-  { src: libus, alt: 'libus' },
+  { src: libus, alt: 'Libus' },
   { src: lusqtoff, alt: 'Lusqtoff' },
-  { src: mapa, alt: 'mapa' }
+  { src: mapa, alt: 'Mapa' }
 ];
 
 const Carrousel = () => {

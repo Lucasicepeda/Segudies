@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import ItemList from "./ItemList";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { db } from "../../../firebase/config";
+import { db } from "../../firebase/config";
+import atrasBtn from "../../assets/atrasBtn.svg"
+
+
 
 const ItemListContainer = () => {
     const [productos, setProductos] = useState([]);
@@ -25,7 +28,12 @@ const ItemListContainer = () => {
 
     return (
         <div>
-            <ItemList productos={productos} titulo={titulo} />
+            <Link to="/"><img className="atras-btn" src={atrasBtn} alt="atras"/></Link>   
+            {productos.length === 0 ? (
+                    <p className="notProduct">No existen productos de la marca {marca}</p>
+                ) : (
+                    <ItemList productos={productos} titulo={titulo} />
+                )} 
         </div>
     );
 }
