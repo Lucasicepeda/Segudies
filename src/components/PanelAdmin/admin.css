@@ -1,0 +1,30 @@
+.productsList {
+    padding: 0px 7.5vw;
+}
+
+.productsAdmin {
+    display: flex;
+    flex-direction: column;
+}
+
+.productsAdmin .itemlist {
+    display: flex;
+}
+
+.adminTable {
+    margin-top: 20px;
+}
+
+.adminTable thead th {
+    font-size: 25px;
+}
+
+.border {
+    margin: 10px 0px;
+    border-bottom: 1.2px solid #262626;
+}
+
+
+.adminTable tbody tr:last-child td {
+    border-bottom: none;
+}
