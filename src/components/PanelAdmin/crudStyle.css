@@ -1,0 +1,28 @@
+.product-details {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+  }
+  
+  .product-details h2 {
+    margin-bottom: 20px;
+  }
+  
+  .product-details ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .product-details li {
+    margin-bottom: 10px;
+  }
+  
+  .images-container{
+    display: flex;
+  }
+  
+  .images{
+    width: 200px;
+  }

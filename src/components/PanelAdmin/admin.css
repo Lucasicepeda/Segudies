@@ -1,10 +1,11 @@
 .productsList {
-    padding: 0px 7.5vw;
+    padding: 0px 3vw;
 }
 
 .productsAdmin {
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
 }
 
 .productsAdmin .itemlist {
@@ -24,7 +25,62 @@
     border-bottom: 1.2px solid #262626;
 }
 
-
 .adminTable tbody tr:last-child td {
     border-bottom: none;
+}
+
+.text-end {
+    padding: 40px 0px 10px;
+}
+
+.text-end input {
+    height: 25px;
+    width: 300px;
+}
+
+.dataTable {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.dataTable table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.dataTable thead {
+    background-color: #e3f2fd;
+}
+
+.dataTable th,
+.dataTable td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.dataTable th {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.dataTable td {
+    font-size: 14px;
+}
+
+.dataTable tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.dataTable tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.edit-icon{
+    width: 20px;
+    height: 20px;
+}
+
+.borrar-icon {
+    width: 25px;
+    height: 25px;
 }

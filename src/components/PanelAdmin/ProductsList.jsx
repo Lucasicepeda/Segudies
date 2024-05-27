@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/config";
-import Paginador from "../Paginador/Paginador";
 import DataTable from "react-data-table-component";
+import { Link } from "react-router-dom";
+import editIcon from "./assetsAdmin/editIcon.svg";
+import borrarIcon from "./assetsAdmin/borrarIcon.svg";
+import customStyles from "./customStyles";
 import "./admin.css";
+
 
 const ProductsList = () => {
   const [productosFiltrados, setProductosFiltrados] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(20);
+  const [records, setRecords] = useState([]);
 
   useEffect(() => {
     const productosRef = collection(db, "productsListPrueba");
@@ -19,81 +21,76 @@ const ProductsList = () => {
         const productosData = resp.docs.map((doc) => ({
           ...doc.data(),
           id: doc.id,
+          editar: <img src={editIcon} alt="Editar" className="edit-icon" />,
+          borrar: <img src={borrarIcon} alt="Borrar" className="borrar-icon" />
         }));
         setProductosFiltrados(productosData);
+        setRecords(productosData);
       })
       .catch((error) => {
         console.error("Error obteniendo productos:", error);
       });
   }, []);
 
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = productosFiltrados.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct
-  );
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-
   const columns = [
     {
       name: "Titulo",
-      selector: row => row.titulo
+      selector: row => row.titulo,
+      sortable: true,
+      width: '40vw'
     },
     {
       name: "Categoría",
-      selector: row => row.categoria
+      selector: row => row.categoria,
+      sortable: true,
+      width: '20vw'
     },
     {
       name: "Marca",
-      selector: row => row.marca
-    },
-    {
-      name: "Precio",
-      selector: row => row.precio
+      selector: row => row.marca,
+      sortable: true,
+      width: '20vw'
     },
     {
       name: "Editar",
-      selector: row => row.editar
+      selector: row => row.editar,
+      cell: row => <Link to={`/edit/${row.id}`}><img src={editIcon} alt="Editar" className="edit-icon" /></Link>,
+      width: '7vw' // Ancho predeterminado
     },
     {
       name: "Borrar",
-      selector: row => row.borrar
+      selector: row => row.borrar,
+      cell: row => <img src={borrarIcon} alt="Borrar" className="borrar-icon" />,
+      width: '7vw' // Ancho predeterminado
     },
-  ]
+  ];
 
-  const data = currentProducts.map((producto) => ({
-    titulo: producto.titulo || "Sin título",
-    categoria: producto.categoria || "Sin categoría",
-    marca: producto.marca || "Sin marca",
-    precio: producto.precio !== undefined ? producto.precio : "0.00",
-    editar: "ED",
-    borrar: "x"
-  }));
-  
+  const handleFilter = (event) => {
+    const searchTerm = event.target.value.toLowerCase();
+    const filteredData = productosFiltrados.filter(row =>
+      row.titulo.toLowerCase().includes(searchTerm)
+    );
+    setRecords(filteredData);
+  };
 
   return (
     <div className="productsList">
+      <div className='text-end'><input type="text" onChange={handleFilter} placeholder="Filtrar por título" /></div>
       <div className="productsAdmin">
-        {currentProducts.length === 0 ? (
+        {records.length === 0 ? (
           <p>No existen productos disponibles</p>
         ) : (
           <DataTable
+            className="dataTable"
             columns={columns}
-            data={data}
+            data={records}
+            fixedHeader
+            pagination
+            striped
+            customStyles={customStyles}
           />
         )}
       </div>
-      {productosFiltrados.length > productsPerPage && (
-        <Paginador
-          productosFiltrados={productosFiltrados}
-          productsPerPage={productsPerPage}
-          currentPage={currentPage}
-          paginate={paginate}
-        />
-      )}
     </div>
   );
 };
