@@ -34,7 +34,7 @@
 }
 
 .text-end input {
-    height: 25px;
+    height: 30px;
     width: 300px;
 }
 
@@ -83,4 +83,28 @@
 .borrar-icon {
     width: 25px;
     height: 25px;
+}
+
+.header-table{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+
+
+}
+
+.newProduct-btn button{
+    margin: 40px 0px 10px;
+    background-color: #EDB300;
+    border: 0;
+    color: black;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+    line-height: 1;
+    border: 2px solid #EDB300;
+    transition: .2s;
+    padding: 0.7rem;
+
 }

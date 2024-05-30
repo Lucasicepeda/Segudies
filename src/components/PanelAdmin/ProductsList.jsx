@@ -75,7 +75,10 @@ const ProductsList = () => {
 
   return (
     <div className="productsList">
-      <div className='text-end'><input type="text" onChange={handleFilter} placeholder="Filtrar por título" /></div>
+      <div className="header-table">
+        <div className='text-end'><input type="text" onChange={handleFilter} placeholder="Filtrar por título" /></div>
+        <div className="newProduct-btn"><button>+ Producto</button></div>
+      </div>
       <div className="productsAdmin">
         {records.length === 0 ? (
           <p>No existen productos disponibles</p>

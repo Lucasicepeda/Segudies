@@ -3,13 +3,14 @@ import ItemList from "./ItemList";
 import { Link, useParams } from "react-router-dom";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../firebase/config";
-import atrasBtn from "../../assets/atrasBtn.svg"
-
-
+import atrasBtn from "../../assets/atrasBtn.svg";
+import Paginador from "../Paginador/Paginador.jsx";
 
 const ItemListContainer = () => {
     const [productos, setProductos] = useState([]);
     const [titulo, setTitulo] = useState("Productos");
+    const [currentPage, setCurrentPage] = useState(1);
+    const [productsPerPage] = useState(10); 
     const marca = useParams().marca;
 
     useEffect(() => {
@@ -26,14 +27,29 @@ const ItemListContainer = () => {
             });
     }, [marca]);
 
+    // Obtener productos actuales
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentProducts = productos.slice(indexOfFirstProduct, indexOfLastProduct);
+    // Cambiar página
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
     return (
         <div>
             <Link to="/"><img className="atras-btn" src={atrasBtn} alt="atras"/></Link>   
             {productos.length === 0 ? (
-                    <p className="notProduct">No existen productos de la marca {marca}</p>
-                ) : (
-                    <ItemList productos={productos} titulo={titulo} />
-                )} 
+                <p className="notProduct">No existen productos de la marca {marca}</p>
+            ) : (
+                <>
+                    <ItemList productos={currentProducts} titulo={titulo} />
+                    <Paginador 
+                        productosFiltrados={productos} 
+                        productsPerPage={productsPerPage} 
+                        currentPage={currentPage} 
+                        paginate={paginate} 
+                    />
+                </>
+            )}
         </div>
     );
 }

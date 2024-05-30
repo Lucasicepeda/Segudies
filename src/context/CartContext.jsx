@@ -27,10 +27,6 @@ export const CartProvider = ({children}) => {
         return carrito.reduce((acc, prod) => acc + prod.cantidad, 0);
     }
 
-    const precioTotal = () => {
-        return carrito.reduce((acc, prod) => acc + prod.precio * prod.cantidad, 0);
-    }
-
     const vaciarCarrito = () => {
         setCarrito([]);
     }
@@ -45,7 +41,6 @@ export const CartProvider = ({children}) => {
             carrito,
             agregarAlCarrito,
             cantidadEnCarrito,
-            precioTotal,
             vaciarCarrito
         } }>
             {children}

@@ -5,7 +5,7 @@ import atrasBtn from "../assets/atrasBtn.svg"
 
 const Carrito = () => {
 
-    const { carrito, precioTotal, vaciarCarrito } = useContext(CartContext);
+    const { carrito, cantidadEnCarrito, vaciarCarrito } = useContext(CartContext);
 
     const handleVaciar = () => {
         vaciarCarrito();
@@ -24,8 +24,8 @@ const Carrito = () => {
                     <img className="imgItemCarrito" src={prod.images[0]} alt="prod.imagen"/>
                     <div className="infoItemCarrito">
                         <h3>{prod.titulo}</h3>
-                        <p>Precio unitario:  ${prod.precio}</p>
-                        <p>Precio total:  ${prod.precio * prod.cantidad}</p>
+                        {/* <p>Precio unitario:  ${prod.precio}</p>
+                        <p>Precio total:  ${prod.precio * prod.cantidad}</p> */}
                         <p>Cantidad: {prod.cantidad}</p>
                     </div>
                 </div>
@@ -35,7 +35,7 @@ const Carrito = () => {
         {  
             carrito.length > 0 ?
             <>
-                <h2 className='precioTotal'>Precio total: ${precioTotal()}</h2>
+                <h3 className='precioTotal'>Cantidad de productos: {cantidadEnCarrito()}</h3>
                 <div className='btnsComprar'>
                     <button onClick={handleVaciar} className='btn-vaciar'>Vaciar</button>
                     <Link to="/checkout"><button className='btn-finalizar-compra'>Finalizar compra</button></Link>
