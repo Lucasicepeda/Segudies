@@ -1,8 +1,8 @@
 // import React, { useEffect, useState } from "react";
-// import { useParams } from "react-router-dom";
-// import { collection, getDocs, query, where, orderBy, limit, startAfter } from "firebase/firestore";
+// import { collection, getDocs, query, where } from "firebase/firestore";
 // import { db } from "../../firebase/config";
 // import Item from "../Item/Item";
+// import Paginador from "../Paginador/Paginador";
 // import './filters.css';
 
 // const Filters = () => {
@@ -11,18 +11,17 @@
 //     const [ordenSeleccionado, setOrdenSeleccionado] = useState("");
 //     const [productosFiltrados, setProductosFiltrados] = useState([]);
 //     const [currentPage, setCurrentPage] = useState(1);
-//     const [productsPerPage] = useState(8); //Cuantos productos por pagina se muestran
-//     const marcaParam = useParams().marca;
+//     const [productsPerPage] = useState(8);
 
 //     useEffect(() => {
 //         const productosRef = collection(db, "productsListPrueba");
-    
+
 //         getDocs(productosRef)
 //             .then((resp) => {
 //                 const productosData = resp.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
 //                 const marcasUnicas = [...new Set(productosData.map((producto) => producto.marca))];
 //                 setMarcas(marcasUnicas);
-//                 setProductosFiltrados(productosData); // Mostrar todos los productos al inicio
+//                 setProductosFiltrados(productosData);
 //             })
 //             .catch((error) => {
 //                 console.error("Error obteniendo productos:", error);
@@ -39,7 +38,7 @@
 
 //     const handleBuscarClick = (event) => {
 //         event.preventDefault();
-        
+
 //         const productosRef = collection(db, "productsListPrueba");
 //         let q = productosRef;
 
@@ -65,12 +64,10 @@
 //             });
 //     };
 
-//     // Lógica para calcular los productos a mostrar en la página actual
 //     const indexOfLastProduct = currentPage * productsPerPage;
 //     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
 //     const currentProducts = productosFiltrados.slice(indexOfFirstProduct, indexOfLastProduct);
 
-//     // Cambiar de página
 //     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
 //     return (
@@ -111,24 +108,21 @@
 //                     ))
 //                 )}
 //             </div>
-//             {/* Paginación */}
 //             {productosFiltrados.length > productsPerPage && (
-//                 <ul className="paginador">
-//                     {Array.from({ length: Math.ceil(productosFiltrados.length / productsPerPage) }).map((_, index) => (
-//                         <li key={index} className={currentPage === index + 1 ? "active" : ""}>
-//                             <button onClick={() => paginate(index + 1)}>{index + 1}</button>
-//                         </li>
-//                     ))}
-//                 </ul>
+//                 <Paginador
+//                     productosFiltrados={productosFiltrados}
+//                     productsPerPage={productsPerPage}
+//                     currentPage={currentPage}
+//                     paginate={paginate}
+//                 />
 //             )}
 //         </div>
-//     )
-// }
+//     );
+// };
 
 // export default Filters;
 
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import Item from "../Item/Item";
@@ -141,64 +135,51 @@ const Filters = () => {
     const [ordenSeleccionado, setOrdenSeleccionado] = useState("");
     const [productosFiltrados, setProductosFiltrados] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [productsPerPage] = useState(8);
-    const marcaParam = useParams().marca;
+    const productsPerPage = 8;
 
     useEffect(() => {
-        const productosRef = collection(db, "productsListPrueba");
-
-        getDocs(productosRef)
-            .then((resp) => {
+        const fetchProductos = async () => {
+            try {
+                const productosRef = collection(db, "productsListPrueba");
+                const resp = await getDocs(productosRef);
                 const productosData = resp.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
                 const marcasUnicas = [...new Set(productosData.map((producto) => producto.marca))];
                 setMarcas(marcasUnicas);
                 setProductosFiltrados(productosData);
-            })
-            .catch((error) => {
+            } catch (error) {
                 console.error("Error obteniendo productos:", error);
-            });
+            }
+        };
+
+        fetchProductos();
     }, []);
 
-    const handleMarcaChange = (event) => {
-        setMarcaSeleccionada(event.target.value);
-    };
+    const handleMarcaChange = (event) => setMarcaSeleccionada(event.target.value);
+    const handleOrdenChange = (event) => setOrdenSeleccionado(event.target.value);
 
-    const handleOrdenChange = (event) => {
-        setOrdenSeleccionado(event.target.value);
-    };
-
-    const handleBuscarClick = (event) => {
+    const handleBuscarClick = async (event) => {
         event.preventDefault();
 
-        const productosRef = collection(db, "productsListPrueba");
-        let q = productosRef;
+        try {
+            const productosRef = collection(db, "productsListPrueba");
+            let q = marcaSeleccionada ? query(productosRef, where("marca", "==", marcaSeleccionada)) : productosRef;
+            const resp = await getDocs(q);
+            let productosData = resp.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
 
-        if (marcaSeleccionada) {
-            q = query(q, where("marca", "==", marcaSeleccionada));
+            if (ordenSeleccionado) {
+                const sortOrder = ordenSeleccionado === "menorPrecio" ? 1 : -1;
+                productosData.sort((a, b) => (a.precio - b.precio) * sortOrder);
+            }
+
+            setProductosFiltrados(productosData);
+            setCurrentPage(1);
+        } catch (error) {
+            console.error("Error obteniendo productos:", error);
         }
-
-        getDocs(q)
-            .then((resp) => {
-                let productosData = resp.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-
-                if (ordenSeleccionado === "menorPrecio") {
-                    productosData.sort((a, b) => a.precio - b.precio);
-                } else if (ordenSeleccionado === "mayorPrecio") {
-                    productosData.sort((a, b) => b.precio - a.precio);
-                }
-
-                setProductosFiltrados(productosData);
-                setCurrentPage(1); // Resetear a la primera página después de cada búsqueda
-            })
-            .catch((error) => {
-                console.error("Error obteniendo productos:", error);
-            });
     };
 
     const indexOfLastProduct = currentPage * productsPerPage;
-    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    const currentProducts = productosFiltrados.slice(indexOfFirstProduct, indexOfLastProduct);
-
+    const currentProducts = productosFiltrados.slice(indexOfLastProduct - productsPerPage, indexOfLastProduct);
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
@@ -206,12 +187,7 @@ const Filters = () => {
             <div className='filtro'>
                 <form id="filtroBusqueda" onSubmit={handleBuscarClick}>
                     <div className="ordenMarca">
-                        <select
-                            name="selectMarca"
-                            defaultValue=""
-                            className="selectMarca"
-                            onChange={handleMarcaChange}
-                        >
+                        <select name="selectMarca" className="selectMarca" onChange={handleMarcaChange} defaultValue="">
                             <option value="">Todos</option>
                             {marcas.map((marca, index) => (
                                 <option key={index} value={marca}>{marca}</option>
@@ -219,7 +195,7 @@ const Filters = () => {
                         </select>
                     </div>
                     <div className="ordenPrecio">
-                        <select name="selectPrecio" defaultValue="" onChange={handleOrdenChange}>
+                        <select name="selectPrecio" onChange={handleOrdenChange} defaultValue="">
                             <option value="" disabled hidden>Ordenar por:</option>
                             <option value="menorPrecio">Menor precio</option>
                             <option value="mayorPrecio">Mayor precio</option>
@@ -234,9 +210,7 @@ const Filters = () => {
                 {currentProducts.length === 0 ? (
                     <p>No existen productos de la marca {marcaSeleccionada}</p>
                 ) : (
-                    currentProducts.map((producto) => (
-                        <Item key={producto.id} producto={producto} />
-                    ))
+                    currentProducts.map((producto) => <Item key={producto.id} producto={producto} />)
                 )}
             </div>
             {productosFiltrados.length > productsPerPage && (
@@ -252,4 +226,4 @@ const Filters = () => {
 };
 
 export default Filters;
-
+ 

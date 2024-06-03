@@ -5,8 +5,10 @@ import Banner from "./components/Banner/Banner";
 import Carrousel from "./components/Carrousel/Carrousel";
 import Filters from "./components/Filters/Filters.jsx";
 import Footer from "./components/Footer/Footer";
-// import ProductsList from './components/PanelAdmin/ProductsList.jsx';
-// import CrudProduct from './components/PanelAdmin/CrudProduct.jsx';
+import ProductsList from './components/PanelAdmin/ProductsList.jsx';
+import CrudProduct from './components/PanelAdmin/CrudProduct.jsx';
+import Edit from './components/PanelAdmin/Edit.jsx';
+import Create from './components/PanelAdmin/Create.jsx';
 import ItemDetailContainer from "./components/Item/ItemDetailContainer";
 import ItemListContainer from "./components/Item/ItemListContainer.jsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -15,6 +17,7 @@ import Carrito from "./components/Carrito";
 import Checkout from "./components/Checkout";
 import WhatsappIcon from "./components/WhatsappIcon/WhatsappIcon.jsx";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+
 
 function App() {
   return (
@@ -39,8 +42,9 @@ function App() {
           <Route path="/productos/:marca" element={<ItemListContainer />} />
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/checkout" element={<Checkout />} />
-          {/* <Route path="/admin" element={<ProductsList />} />
-          <Route path="/edit/:id" element={<CrudProduct />} /> */}
+          <Route path="/admin" element={<ProductsList />} />
+          <Route path="/admin/edit/:id" element={<Edit />} />
+          <Route path="/admin/create/" element={<Create />} />
         </Routes>
 
         <Footer />
