@@ -1,155 +1,7 @@
-// import React, { useEffect, useState } from "react";
-// import { collection, deleteDoc, getDocs, doc } from "firebase/firestore";
-// import { useNavigate } from 'react-router-dom'
-// import { db } from "../../firebase/config";
-// import DataTable from "react-data-table-component";
-// import { Link } from "react-router-dom";
-// import editIcon from "./assetsAdmin/editIcon.svg";
-// import borrarIcon from "./assetsAdmin/borrarIcon.svg";
-// import customStyles from "./customStyles";
-// import "./admin.css";
-
-// import Swal from "sweetalert2";
-// import withReactContent from "sweetalert2-react-content";
-// const MySwal = withReactContent(Swal)
-
-
-// const ProductsList = () => {
-//   const [productosFiltrados, setProductosFiltrados] = useState([]);
-//   const [records, setRecords] = useState([]);
-//   const navigate = useNavigate()
-
-
-//   useEffect(() => {
-//     const productosRef = collection(db, "productsListPrueba");
-
-//     getDocs(productosRef)
-//       .then((resp) => {
-//         const productosData = resp.docs.map((doc) => ({
-//           ...doc.data(),
-//           id: doc.id,
-//           editar: <img src={editIcon} alt="Editar" className="edit-icon" />,
-//           borrar: <img src={borrarIcon} alt="Borrar" className="borrar-icon" />
-//         }));
-//         setProductosFiltrados(productosData);
-//         setRecords(productosData);
-//       })
-//       .catch((error) => {
-//         console.error("Error obteniendo productos:", error);
-//       });
-//   }, []);
-
-//   const columns = [
-//     {
-//       name: "Titulo",
-//       selector: row => row.titulo,
-//       sortable: true,
-//       width: '40vw'
-//     },
-//     {
-//       name: "Categoría",
-//       selector: row => row.categoria,
-//       sortable: true,
-//       width: '20vw'
-//     },
-//     {
-//       name: "Marca",
-//       selector: row => row.marca,
-//       sortable: true,
-//       width: '20vw'
-//     },
-//     {
-//       name: "Editar",
-//       selector: row => row.editar,
-//       cell: row => <Link to={`/admin/edit/${row.id}`}><img src={editIcon} alt="Editar" className="edit-icon" /></Link>,
-//       width: '7vw' // Ancho predeterminado
-//     },
-//     {
-//       name: "Borrar",
-//       selector: row => row.borrar,
-//       cell: row => (
-//         <a 
-//           href="#" 
-//           onClick={(e) => {
-//             confirmDelete(row.id, row.titulo);  // Llama a la función deleteProduct con el id correcto
-//           }}
-//         >
-//           <img src={borrarIcon} alt="Borrar" className="borrar-icon" />
-//         </a>
-//       ),
-//       width: '7vw' // Ancho predeterminado
-//     },
-//   ];
-
-//   const handleFilter = (event) => {
-//     const searchTerm = event.target.value.toLowerCase();
-//     const filteredData = productosFiltrados.filter(row =>
-//       row.titulo.toLowerCase().includes(searchTerm)
-//     );
-//     setRecords(filteredData);
-//   };
-
-//   const deleteProduct = async (id) => {
-//     const productDoc = doc(db, "productsListPrueba", id);
-//     await deleteDoc(productDoc);
-//   };
-
-//   const confirmDelete = (id, titulo) =>{
-//     MySwal.fire({
-//       title: "¿Desea eliminar este producto?",
-//       text: "Esta accion no se puede revertir",
-//       icon: "warning",
-//       showCancelButton: true,
-//       confirmButtonColor: "#3085d6",
-//       cancelButtonColor: "#d33",
-//       confirmButtonText: "Eliminar"
-//     }).then((result) => {
-//       if (result.isConfirmed) {
-//         deleteProduct(id)
-//         Swal.fire({
-//           title: "Eliminado!",
-//           text: `El producto "${titulo}" fue eliminado correctamente`,
-//           icon: "success"
-//         });
-//         navigate ('/admin')
-//       }
-//     });
-//   }
-
-
-//   return (
-//     <div className="productsList">
-//       <div className="header-table">
-//         <div className='text-end'>
-//           <input type="text" onChange={handleFilter} placeholder="Filtrar por título" />
-//         </div>
-//         <Link to="./create" className="newProduct-btn">Nuevo Producto</Link>
-//       </div>
-//       <div className="productsAdmin">
-//         {records.length === 0 ? (
-//           <p>No existen productos disponibles</p>
-//         ) : (
-//           <DataTable
-//             className="dataTable"
-//             columns={columns}
-//             data={records}
-//             fixedHeader
-//             pagination
-//             striped
-//             customStyles={customStyles}
-//           />
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ProductsList;
-
 import React, { useEffect, useState } from "react";
 import { collection, deleteDoc, getDocs, doc } from "firebase/firestore";
 import { useNavigate } from 'react-router-dom';
-import { db } from "../../firebase/config";
+import { db, coleccionFirebase } from "../../firebase/config";
 import DataTable from "react-data-table-component";
 import { Link } from "react-router-dom";
 import editIcon from "./assetsAdmin/editIcon.svg";
@@ -168,7 +20,7 @@ const ProductsList = () => {
 
   const fetchProducts = async () => {
     try {
-      const productosRef = collection(db, "productsListPrueba");
+      const productosRef = collection(db, coleccionFirebase);
       const resp = await getDocs(productosRef);
       const productosData = resp.docs.map((doc) => ({
         ...doc.data(),
@@ -239,7 +91,7 @@ const ProductsList = () => {
   };
 
   const deleteProduct = async (id) => {
-    const productDoc = doc(db, "productsListPrueba", id);
+    const productDoc = doc(db, coleccionFirebase, id);
     await deleteDoc(productDoc);
     await fetchProducts(); // Refresca la lista de productos después de eliminar
   };

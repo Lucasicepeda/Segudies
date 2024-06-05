@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../firebase/config";
+import { db, coleccionFirebase } from "../../firebase/config";
 import atrasBtn from "../../assets/atrasBtn.svg";
 import './crudStyle.css'
 
@@ -12,7 +12,7 @@ const CrudProduct = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const docRef = doc(db, "productsListPrueba", id);
+        const docRef = doc(db, coleccionFirebase, id);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           setProduct({ id: docSnap.id, ...docSnap.data() });

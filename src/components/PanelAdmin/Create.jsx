@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { collection, addDoc } from 'firebase/firestore'
+import { collection, addDoc, coleccionFirebase } from 'firebase/firestore'
 import { db } from '../../firebase/config'
 
 
@@ -14,7 +14,7 @@ function Create() {
   const navigate = useNavigate()
 
 
-  const productsColeccion = collection(db, "productsListPrueba" )
+  const productsColeccion = collection(db, coleccionFirebase )
 
   const store = async (e) => {
     e.preventDefault()

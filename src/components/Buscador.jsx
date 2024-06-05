@@ -2,7 +2,7 @@ import './Header/header.css';
 import search from '../assets/search.png';
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs } from "firebase/firestore";
-import { db } from '../firebase/config';
+import { db, coleccionFirebase } from '../firebase/config';
 import { Link } from 'react-router-dom';
 
 const Buscador = () => {
@@ -11,7 +11,7 @@ const Buscador = () => {
 
     useEffect(() => {
         const fetchProducts = async () => {
-            const productosRef = collection(db, "productsListPrueba");
+            const productosRef = collection(db, coleccionFirebase);
             try {
                 const productsSnapshot = await getDocs(productosRef);
                 const productosData = productsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));

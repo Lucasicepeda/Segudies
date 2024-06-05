@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import ItemDetail from "./ItemDetail";
 import { Link, useParams } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../firebase/config";
+import { db, coleccionFirebase } from "../../firebase/config";
 import atrasBtn from "../../assets/atrasBtn.svg"
 
 
@@ -13,7 +13,7 @@ const ItemDetailContainer = () => {
 
     useEffect(() => {
 
-      const docRef = doc(db, "productsListPrueba", id);
+      const docRef = doc(db, coleccionFirebase, id);
       getDoc(docRef)
         .then((resp) => {
           setItem(

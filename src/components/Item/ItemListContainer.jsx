@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ItemList from "./ItemList";
 import { Link, useParams } from "react-router-dom";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { db } from "../../firebase/config";
+import { db, coleccionFirebase } from "../../firebase/config";
 import atrasBtn from "../../assets/atrasBtn.svg";
 import Paginador from "../Paginador/Paginador.jsx";
 
@@ -14,7 +14,7 @@ const ItemListContainer = () => {
     const marca = useParams().marca;
 
     useEffect(() => {
-        const productosRef = collection(db, "productsListPrueba");
+        const productosRef = collection(db, coleccionFirebase);
         const q = marca ? query(productosRef, where("marca", "==", marca)) : productosRef;
 
         getDocs(q)
