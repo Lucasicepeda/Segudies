@@ -112,20 +112,48 @@
 .btn-submit{
     width: min-content;
     padding: 0.7rem 2rem;
+    justify-self: flex-end;
+    margin: 0px;
+}
+
+
+.label{
+    width: 150px;
+    padding: 0 5px;
+}
+
+.form-control{
+    height: 25px;
 }
 
 .form-create{
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-template-rows: repeat(2, 2fr);
+    margin: 30px 15vw;
+    padding: 20px 20px;
     gap: 20px;
-    margin: 30px;
 }
 
 .form-item{
+    margin: 5px;
     display: flex;
-    
 }
 
-.label{
-    width: 100px;
+.form-item ul li{
+    list-style: none;
+}
+
+.create-product{
+    margin: 20px 0px 0px 30px;
+}
+
+
+.btn-remove{
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.btn-Add{
+    height: 25px;
 }

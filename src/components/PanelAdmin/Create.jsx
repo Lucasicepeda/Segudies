@@ -1,80 +1,320 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { collection, addDoc, coleccionFirebase } from 'firebase/firestore'
-import { db } from '../../firebase/config'
+// import React, { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import { collection, addDoc } from 'firebase/firestore';
+// import { db, coleccionFirebase, storage } from '../../firebase/config';
+// import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+// import "./admin.css";
 
+// function Create() {
+//   const [formData, setFormData] = useState({
+//     marca: '',
+//     codigo: '',
+//     categoria: '',
+//     descripcion: '',
+//     titulo: '',
+//     medida: '',
+//     medidas: [],
+//     imagenes: [],
+//     iva: '',
+//     largo: '',
+//     material: '',
+//     unidxcaja: ''
+//   });
+
+//   const navigate = useNavigate();
+//   const productsColeccion = collection(db, coleccionFirebase);
+
+//   const handleInputChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData({ ...formData, [name]: value });
+//   };
+
+//   const handleImageChange = (e) => {
+//     const files = Array.from(e.target.files);
+//     setFormData({ ...formData, imagenes: files });
+//   };
+
+//   const store = async (e) => {
+//     e.preventDefault();
+//     const { imagenes, medidas, medida, ...productData } = formData;
+
+//     const imageUrls = await Promise.all(
+//       imagenes.map(async (imagen) => {
+//         const imageRef = ref(storage, `images/${imagen.name}`);
+//         await uploadBytes(imageRef, imagen);
+//         return getDownloadURL(imageRef);
+//       })
+//     );
+
+//     await addDoc(productsColeccion, { 
+//       ...productData,
+//       medidas,
+//       images: imageUrls
+//     });
+
+//     navigate('/admin');
+//   };
+
+//   const addMedida = (e) => {
+//     e.preventDefault();
+//     if (formData.medida.trim() !== '') {
+//       setFormData({
+//         ...formData,
+//         medidas: [...formData.medidas, formData.medida],
+//         medida: ''
+//       });
+//     }
+//   };
+
+//   const removeMedida = (index) => {
+//     setFormData({
+//       ...formData,
+//       medidas: formData.medidas.filter((_, i) => i !== index)
+//     });
+//   };
+
+//   const renderInput = (label, name, type = "text") => (
+//     <div className="form-item">
+//       <label className='label'>{label}</label>
+//       <input 
+//         name={name}
+//         value={formData[name]}
+//         onChange={handleInputChange}
+//         type={type}
+//         className='form-control'
+//       />
+//     </div>
+//   );
+
+//   return (
+//     <div>
+//       <h2>Crear producto</h2>
+//       <form className='form-create' onSubmit={store}>
+//         {renderInput("Marca", "marca")}
+//         {renderInput("Codigo", "codigo")}
+//         {renderInput("Categoria", "categoria")}
+//         {renderInput("Descripcion", "descripcion")}
+//         {renderInput("Titulo", "titulo")}
+//         {renderInput("IVA", "iva")}
+//         {renderInput("Unidades x Caja", "unidxcaja")}
+//         {renderInput("Largo", "largo")}
+//         {renderInput("Material", "material")}
+//         <div className="form-item">
+//           <label className='label'>Medidas</label>
+//           <input 
+//             name="medida"
+//             value={formData.medida}
+//             onChange={handleInputChange}
+//             type="text"
+//             className='form-control'
+//           />
+//           <button onClick={addMedida} className='btn-AddMedida'>Agregar Medida</button>
+//         </div>
+//         <div className="form-item">
+//           <label className='label'>Medidas añadidas</label>
+//           <ul>
+//             {formData.medidas.map((op, index) => (
+//               <p key={index}>
+//                 {op}
+//                 <button onClick={() => removeMedida(index)} className='btn-remove' style={{marginLeft: '10px'}}>Eliminar</button>
+//               </p>
+//             ))}
+//           </ul>
+//         </div>
+//         <div className="form-item">
+//           <label className='label'>Imágenes</label>
+//           <input 
+//             type="file" 
+//             multiple 
+//             onChange={handleImageChange} 
+//             className='form-control'
+//           />
+//         </div>
+//         <button type='submit' className='btn-submit'>Enviar</button>
+//       </form>
+//     </div>
+//   );
+// }
+
+// export default Create;
+
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { collection, addDoc } from 'firebase/firestore';
+import { db, coleccionFirebase, storage } from '../../firebase/config';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import "./admin.css";
 
 function Create() {
-  const [ marca, setMarca ] = useState ('')
-  const [ codigo, setCodigo ] = useState ('')
-  const [ categoria, setCategoria ] = useState ('')
-  const [ descripcion, setDescripcion ] = useState ('')
-  const [ titulo, setTitulo ] = useState ('')
-  // const [ images, setImages ] = useState ([])
-  const navigate = useNavigate()
+  const [formData, setFormData] = useState({
+    marca: '',
+    codigo: '',
+    categoria: '',
+    descripcion: '',
+    titulo: '',
+    medida: '',
+    medidas: [],
+    imagenes: [],
+    iva: '',
+    largo: '',
+    largos: [],
+    material: '',
+    unidxcaja: ''
+  });
 
+  const navigate = useNavigate();
+  const productsColeccion = collection(db, coleccionFirebase);
 
-  const productsColeccion = collection(db, coleccionFirebase )
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleImageChange = (e) => {
+    const files = Array.from(e.target.files);
+    setFormData({ ...formData, imagenes: files });
+  };
 
   const store = async (e) => {
-    e.preventDefault()
-    await addDoc( productsColeccion, { marca: marca, codigo: codigo, categoria: categoria, descripcion: descripcion, titulo: titulo} )
-    navigate ('/admin')
-  }
+    e.preventDefault();
+    const { imagenes, medidas, largos, medida, largo, ...productData } = formData;
+
+    const imageUrls = await Promise.all(
+      imagenes.map(async (imagen) => {
+        const imageRef = ref(storage, `images/${imagen.name}`);
+        await uploadBytes(imageRef, imagen);
+        return getDownloadURL(imageRef);
+      })
+    );
+
+    await addDoc(productsColeccion, { 
+      ...productData,
+      medidas,
+      largos,
+      images: imageUrls
+    });
+
+    navigate('/admin');
+  };
+
+  const addMedida = (e) => {
+    e.preventDefault();
+    if (formData.medida.trim() !== '') {
+      setFormData({
+        ...formData,
+        medidas: [...formData.medidas, formData.medida],
+        medida: ''
+      });
+    }
+  };
+
+  const removeMedida = (index) => {
+    setFormData({
+      ...formData,
+      medidas: formData.medidas.filter((_, i) => i !== index)
+    });
+  };
+
+  const addLargo = (e) => {
+    e.preventDefault();
+    if (formData.largo.trim() !== '') {
+      setFormData({
+        ...formData,
+        largos: [...formData.largos, formData.largo],
+        largo: ''
+      });
+    }
+  };
+
+  const removeLargo = (index) => {
+    setFormData({
+      ...formData,
+      largos: formData.largos.filter((_, i) => i !== index)
+    });
+  };
+
+  const renderInput = (label, name, type = "text") => (
+    <div className="form-item">
+      <label className='label'>{label}</label>
+      <input 
+        name={name}
+        value={formData[name]}
+        onChange={handleInputChange}
+        type={type}
+        className='form-control'
+      />
+    </div>
+  );
 
   return (
     <div>
-      <h2>Crear producto</h2>
-        <form className='form-create' onSubmit={store}>
-          <div className="form-item">
-              <label className='label'>Marca</label>
-            <input 
-              value={marca}
-              onChange={ (e)=> setMarca(e.target.value)}
-              type="text"
-              className='form-control'
-            />
-          </div>
-          <div className="form-item">
-            <label className='label'>Codigo</label>
-            <input 
-              value={codigo}
-              onChange={ (e)=> setCodigo(e.target.value)}
-              type="text"
-              className='form-control'
-            />
-          </div>
-          <div className="form-item">
-            <label className='label'>Categoria</label>
-            <input 
-              value={categoria}
-              onChange={ (e)=> setCategoria(e.target.value)}
-              type="text"
-              className='form-control'
-            />
-          </div>
-          <div className="form-item">
-            <label className='label'>Descripcion</label>
-            <input 
-              value={descripcion}
-              onChange={ (e)=> setDescripcion(e.target.value)}
-              type="text"
-              className='form-control'
-            />
-          </div>
-          <div className="form-item">
-            <label className='label'>Titulo</label>
-            <input 
-              value={titulo}
-              onChange={ (e)=> setTitulo(e.target.value)}
-              type="text"
-              className='form-control'
-            />
-          </div>
-          <button type='submit' className='btn-submit'>Enviar</button>
-        </form>
+      <h2 className='create-product'>Crear producto</h2>
+      <form className='form-create' onSubmit={store}>
+        {renderInput("Titulo", "titulo")}
+        {renderInput("Marca", "marca")}
+        {renderInput("Descripcion", "descripcion")}
+        {renderInput("Categoria", "categoria")}
+        {renderInput("Codigo", "codigo")}
+        {renderInput("IVA", "iva")}
+        {renderInput("Unidades x Caja", "unidxcaja")}
+        {renderInput("Material", "material")}
+        <div className="form-item">
+          <label className='label'>Medidas</label>
+          <input 
+            name="medida"
+            value={formData.medida}
+            onChange={handleInputChange}
+            type="text"
+            className='form-control'
+          />
+          <button onClick={addMedida} className='btn-Add'>Agregar Medida</button>
+        </div>
+        <div className="form-item">
+          <label className='label'>Medidas: </label>
+          <ul>
+            {formData.medidas.map((op, index) => (
+              <li key={index}>
+                {op}
+                <button onClick={() => removeMedida(index)} className='btn-remove'>Eliminar</button>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="form-item">
+          <label className='label'>Largo</label>
+          <input 
+            name="largo"
+            value={formData.largo}
+            onChange={handleInputChange}
+            type="text"
+            className='form-control'
+          />
+          <button onClick={addLargo} className='btn-Add'>Agregar Largo</button>
+        </div>
+        <div className="form-item">
+          <label className='label'>Largos:</label>
+          <ul>
+            {formData.largos.map((op, index) => (
+              <li key={index}>
+                {op}
+                <button onClick={() => removeLargo(index)} className='btn-remove'>Eliminar</button>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="form-item">
+          <label className='label'>Imágenes</label>
+          <input 
+            type="file" 
+            multiple 
+            onChange={handleImageChange} 
+            className='form-control'
+          />
+        </div>
+        <button type='submit' className='btn-submit'>Enviar</button>
+      </form>
     </div>
-  )
+  );
 }
 
-export default Create
+export default Create;
