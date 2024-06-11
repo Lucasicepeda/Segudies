@@ -44,17 +44,20 @@ const ProductsList = () => {
       name: "Titulo",
       selector: row => row.titulo,
       sortable: true,
-      width: '40vw'
-    },
-    {
-      name: "Categoría",
-      selector: row => row.categoria,
-      sortable: true,
-      width: '20vw'
+      width: '40vw',
+      cell: row => <div className="custom-column-title">{row.titulo}</div>, // Agregar clase CSS personalizada para el título
+
     },
     {
       name: "Marca",
       selector: row => row.marca,
+      sortable: true,
+      width: '20vw',
+      cell: row => <div className="custom-column-marca">{row.marca}</div>, // Agregar clase CSS personalizada para la marca
+    },
+    {
+      name: "Categoría",
+      selector: row => row.categoria,
       sortable: true,
       width: '20vw'
     },

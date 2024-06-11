@@ -15,7 +15,7 @@
     height: 2rem;
     color: black;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,3 +29,7 @@
     background-color: #FFC800;
 
 }
+
+.btn-pgn {
+    width: 11px;
+  }

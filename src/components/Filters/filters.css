@@ -35,3 +35,7 @@ select[name="selectMarca"], select[name="selectPrecio"]  {
     font-weight: 700;
     font-size: 20px;
 }
+
+.nameProduct h4, .Marca{
+    text-transform: uppercase;
+  }

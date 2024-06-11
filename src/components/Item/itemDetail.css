@@ -76,3 +76,7 @@
     text-align: center;
     margin: 10vh auto;
   }
+
+  .titulo, .marca{
+    text-transform: uppercase;
+  }

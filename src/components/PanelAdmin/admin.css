@@ -157,3 +157,18 @@
 .btn-Add{
     height: 25px;
 }
+
+input[name="marca"],
+input[name="titulo"] {
+  text-transform: uppercase;
+}
+
+.custom-column-title {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .custom-column-marca {
+    text-transform: uppercase;
+  }
+  

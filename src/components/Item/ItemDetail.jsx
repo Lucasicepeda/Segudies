@@ -4,7 +4,7 @@ import ItemCount from "./ItemCount"
 import { CartContext } from "../../context/CartContext"
 import chevronLeft from "../../assets/chevron-left.svg"
 import chevronRight from "../../assets/chevron-right.svg"
-import './itemDetail.css'
+import './itemDetail.css' 
 
 const ItemDetail = ({ item }) => {
 
@@ -56,6 +56,7 @@ const ItemDetail = ({ item }) => {
             <p className="descripcion">{item.descripcion}</p>
             <p className="marca">Marca: {toCapital(item.marca)}</p>
             <p className="codigo">Codigo: {item.codigo}</p>
+            <p className="iva">Iva: {item.iva}</p>
           </div>
           <ItemCount
             cantidad={cantidad}
