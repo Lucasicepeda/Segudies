@@ -1,0 +1,14 @@
+{
+    "routes": [
+      { "src": "/", "dest": "/index.html" },
+      { "src": "/item/:id", "dest": "/index.html" },
+      { "src": "/productos/:marca", "dest": "/index.html" },
+      { "src": "/carrito", "dest": "/index.html" },
+      { "src": "/checkout", "dest": "/index.html" },
+      { "src": "/login", "dest": "/index.html" },
+      { "src": "/admin(.*)", "dest": "/index.html" },
+      { "src": "/admin/edit/:id", "dest": "/index.html" },
+      { "src": "/admin/create", "dest": "/index.html" }
+    ]
+  }
+  
