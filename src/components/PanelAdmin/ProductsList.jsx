@@ -8,6 +8,9 @@ import editIcon from "./assetsAdmin/editIcon.svg";
 import borrarIcon from "./assetsAdmin/borrarIcon.svg";
 import customStyles from "./customStyles";
 import "./admin.css";
+import { auth } from '../../firebase/config';
+import { signOut } from 'firebase/auth';
+
 
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -16,7 +19,6 @@ const MySwal = withReactContent(Swal);
 const ProductsList = () => {
   const [productosFiltrados, setProductosFiltrados] = useState([]);
   const [records, setRecords] = useState([]);
-  const navigate = useNavigate();
 
   const fetchProducts = async () => {
     try {
@@ -122,8 +124,26 @@ const ProductsList = () => {
     });
   };
 
+
+      // LOGOUT
+      const navigate = useNavigate();
+
+      const handleLogout = () => {
+        signOut(auth)
+          .then(() => {
+            navigate('/'); // Redirigir a la página de inicio de sesión después del cierre de sesión
+          })
+          .catch((error) => {
+            console.error("Error signing out: ", error);
+          });
+      };
+    
+          // LOGOUT
+
   return (
     <div className="productsList">
+                      <button onClick={handleLogout}>Cerrar sesión</button>
+
       <div className="header-table">
         <div className='text-end'>
           <input type="text" onChange={handleFilter} placeholder="Filtrar por título" />

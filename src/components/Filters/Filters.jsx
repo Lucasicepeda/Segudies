@@ -70,13 +70,13 @@ const Filters = () => {
                             ))}
                         </select>
                     </div>
-                    <div className="ordenPrecio">
+                    {/* <div className="ordenPrecio">
                         <select name="selectPrecio" onChange={handleOrdenChange} defaultValue="">
                             <option value="" disabled hidden>Ordenar por:</option>
                             <option value="menorPrecio">Menor precio</option>
                             <option value="mayorPrecio">Mayor precio</option>
                         </select>
-                    </div>
+                    </div> */}
                     <div className="buscar-btn">
                         <button type="submit">BUSCAR</button>
                     </div>
