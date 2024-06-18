@@ -37,7 +37,7 @@ function App() {
   };
 
   // Configura el tiempo de inactividad en milisegundos (ejemplo: 5 minutos)
-  useIdleTimer(5 * 60 * 1000, handleIdle);
+  useIdleTimer(1 * 60 * 1000, handleIdle);
 
   return (
     <CartProvider>
