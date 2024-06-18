@@ -4,7 +4,6 @@ import { signInWithPopup } from 'firebase/auth';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 
-
 const Login = () => {
   const navigate = useNavigate();
 
@@ -19,8 +18,8 @@ const Login = () => {
           icon: 'error',
           title: 'Oops...',
           text: 'No tienes permiso para acceder al panel de administrador.',
+        });
       });
-    });
   };
 
   return (
