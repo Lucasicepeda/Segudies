@@ -1,3 +1,11 @@
+.producto-detalle {
+  /* position: relative;
+  width: 400px; */
+  max-width: 85vw;
+  padding-inline: 1.5rem;
+  margin: 0 auto;
+}
+
 .producto-detalle .titulo{
     font-size: 22px;
     margin-bottom: 20px;
@@ -15,24 +23,18 @@
 
 .producto-detalle-container{
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
+    /* width: 45vw;; */
 }
 
 ---------------------------------------------------
 
-.container {
-    position: relative;
-    width: 400px;
-  } 
 
   .imagenes-container {
     overflow: hidden;
     position: relative;
     width: 400px;
     height: auto;
-    /* border-radius: 15px; 
-    box-shadow: 0px 0px 10px rgba(75, 74, 74, 0.39);*/
   }
   
   .imagenes-container img {
@@ -43,13 +45,13 @@
     display: none;
   }
   .imagen-visible {
-    display: block; /* Mostramos la imagen actual */
+    display: block;
   }
   
   .botones-container {
     position: absolute;
     top: 50%;
-    width: 100%;
+    width: 400px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -77,6 +79,30 @@
     margin: 10vh auto;
   }
 
-  .titulo, .marca{
+  .titulo{
     text-transform: uppercase;
   }
+
+  .detalles-container{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .desplegables-itemDetail {
+    display: flex;
+    flex-direction: column;
+    gap: 15px
+  }
+
+  .desplegables-itemDetail select{
+    margin-top: 10px;
+  }
+
+  select[name="selectLargo"], select[name="selectMedida"]  {
+    border: 1.5px black solid;
+    font-weight: 500;
+    font-size: 20px;
+    padding: 0px 5px;
+    width: 12 0px;
+}

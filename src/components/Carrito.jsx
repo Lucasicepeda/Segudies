@@ -14,10 +14,8 @@ const Carrito = () => {
   return (
     <>
         <Link to="/"><img className="atras-btn" src={atrasBtn} alt="atras"/></Link>    
-    <div className="container container-carrito">
-
+    <div className="container-carrito">
         <h1 className="main-title">Carrito</h1>
-
         {
             carrito.map((prod) => (
                 <div className="itemsCarrito" key={prod.id}>
@@ -31,7 +29,6 @@ const Carrito = () => {
                 </div>
             ))
         }
-
         {  
             carrito.length > 0 ?
             <>
@@ -43,7 +40,6 @@ const Carrito = () => {
             </> :
             <h2 className='carritoVacio'>El carrito está vacío :(</h2>
         }
-        
     </div>
     </>
   )

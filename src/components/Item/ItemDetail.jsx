@@ -1,39 +1,37 @@
 import { useContext, useState } from "react";
-import { toCapital } from "../../helpers/toCapital"
-import ItemCount from "./ItemCount"
-import { CartContext } from "../../context/CartContext"
-import chevronLeft from "../../assets/chevron-left.svg"
-import chevronRight from "../../assets/chevron-right.svg"
-import './itemDetail.css' 
+import { toCapital } from "../../helpers/toCapital";
+import ItemCount from "./ItemCount";
+import { CartContext } from "../../context/CartContext";
+import chevronLeft from "../../assets/chevron-left.svg";
+import chevronRight from "../../assets/chevron-right.svg";
+import "./itemDetail.css";
 
 const ItemDetail = ({ item }) => {
-
-  const { carrito, agregarAlCarrito } = useContext(CartContext);
+  const { agregarAlCarrito } = useContext(CartContext);
 
   const [cantidad, setCantidad] = useState(1);
   const [imagenIndex, setImagenIndex] = useState(0);
 
   const handleRestar = () => {
-    cantidad > 1 && setCantidad(cantidad - 1)
-  }
+    cantidad > 1 && setCantidad(cantidad - 1);
+  };
 
   const handleSumar = () => {
     setCantidad(cantidad + 1);
-  }
+  };
 
   const mostrarSiguienteImagen = () => {
     setImagenIndex((imagenIndex + 1) % item.images.length);
-  }
+  };
 
   const mostrarImagenAnterior = () => {
     setImagenIndex((imagenIndex - 1 + item.images.length) % item.images.length);
-  }
+  };
 
   return (
-    <div className="container">
       <div className="producto-detalle">
         <div className="imagenes-container">
-        {Object.values(item.images).map((image, index) => (
+          {Object.values(item.images).map((image, index) => (
             <img
               key={index}
               src={image}
@@ -50,24 +48,61 @@ const ItemDetail = ({ item }) => {
             </button>
           </div>
         </div>
-        <div className="producto-detalle-container">
-          <div className="detalles-container">
-            <h3 className="titulo">{item.titulo}</h3>
-            <p className="descripcion">{item.descripcion}</p>
-            <p className="marca">Marca: {toCapital(item.marca)}</p>
-            <p className="codigo">Codigo: {item.codigo}</p>
-            <p className="iva">Iva: {item.iva}</p>
+        <div>
+          <h3 className="titulo">{item.titulo}</h3>
+          <div className="producto-detalle-container">
+            <div className="detalles-container">
+              <p className="descripcion">{item.descripcion}</p>
+              <p className="marca">Marca: {toCapital(item.marca)}</p>
+              <p className="codigo">Codigo: {item.codigo}</p>
+              <p className="iva">IVA: {item.iva}</p>
+              <p className="material">Material: {item.material}</p>
+              <p className="UnidxCaja">Unidades x caja: {item.unidxcaja}</p>
+              <div className="desplegables-itemDetail">
+                <div className="largos">
+                  <p>Largos disponibles:</p>
+                  <select
+                    name="selectLargo"
+                    className="desplegable-largos"
+                    defaultValue=""
+                  >
+                    {Object.values(item.largos).map((largos, index) => (
+                      <option key={index} value={largos}>
+                        {largos}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="medidas">
+                  <p>Medidas disponibles:</p>
+                  <select
+                    name="selectMedida"
+                    className="desplegable-medidas"
+                    defaultValue=""
+                  >
+                    {Object.values(item.medidas).map((medidas, index) => (
+                      <option key={index} value={medidas}>
+                        {medidas}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div className="item-count-container">
+              <ItemCount
+                cantidad={cantidad}
+                handleSumar={handleSumar} 
+                handleRestar={handleRestar}
+                handleAgregar={() => {
+                  agregarAlCarrito(item, cantidad);
+                }}
+              />
+            </div>
           </div>
-          <ItemCount
-            cantidad={cantidad}
-            handleSumar={handleSumar}
-            handleRestar={handleRestar}
-            handleAgregar={() => { agregarAlCarrito(item, cantidad) }}
-          />
         </div>
       </div>
-    </div>
-  )
-}
+  );
+};
 
-export default ItemDetail
+export default ItemDetail;

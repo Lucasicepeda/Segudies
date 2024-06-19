@@ -22,16 +22,17 @@
 }
 
 select[name="selectMarca"], select[name="selectPrecio"]  {
-    border: 2px black solid;
+    border: 1.5px black solid;
     font-weight: 700;
     font-size: 20px;
+    padding: 3px 10px;
 }
 
 .buscar-btn button{
-    padding: 1px 10px;
-    border: 2px #EDB300 solid;
+    padding: 3px 10px;
+    border: 1.5px #EDB300 solid;
     color: black;
-    background-color: white;
+    background-color: #EDB300;
     font-weight: 700;
     font-size: 20px;
 }
