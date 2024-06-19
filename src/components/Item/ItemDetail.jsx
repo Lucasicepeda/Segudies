@@ -29,36 +29,45 @@ const ItemDetail = ({ item }) => {
   };
 
   return (
-      <div className="producto-detalle">
-        <div className="imagenes-container">
-          {Object.values(item.images).map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`imagen-${index}`}
-              className={index === imagenIndex ? "imagen-visible" : "no-image"}
-            />
-          ))}
-          <div className="botones-container">
-            <button className="boton" onClick={mostrarImagenAnterior}>
-              <img src={chevronLeft} alt="Anterior" />
-            </button>
-            <button className="boton" onClick={mostrarSiguienteImagen}>
-              <img src={chevronRight} alt="Siguiente" />
-            </button>
-          </div>
+    <div className="producto-detalle">
+      <div className="imagenes-container">
+        {Object.values(item.images).map((image, index) => (
+          <img
+            key={index}
+            src={image}
+            alt={`imagen-${index}`}
+            className={index === imagenIndex ? "imagen-visible" : "no-image"}
+          />
+        ))}
+        <div className="botones-container">
+          <button className="boton" onClick={mostrarImagenAnterior}>
+            <img src={chevronLeft} alt="Anterior" />
+          </button>
+          <button className="boton" onClick={mostrarSiguienteImagen}>
+            <img src={chevronRight} alt="Siguiente" />
+          </button>
         </div>
-        <div>
-          <h3 className="titulo">{item.titulo}</h3>
-          <div className="producto-detalle-container">
-            <div className="detalles-container">
+      </div>
+      <div>
+        <h3 className="titulo">{item.titulo}</h3>
+        <div className="producto-detalle-container">
+          <div className="detalles-container">
+            {item.descripcion && (
               <p className="descripcion">{item.descripcion}</p>
+            )}
+            {item.marca && (
               <p className="marca">Marca: {toCapital(item.marca)}</p>
-              <p className="codigo">Codigo: {item.codigo}</p>
-              <p className="iva">IVA: {item.iva}</p>
+            )}
+            {item.codigo && <p className="codigo">Codigo: {item.codigo}</p>}
+            {item.iva && <p className="iva">IVA: {item.iva}</p>}
+            {item.material && (
               <p className="material">Material: {item.material}</p>
+            )}
+            {item.unidxcaja && (
               <p className="UnidxCaja">Unidades x caja: {item.unidxcaja}</p>
-              <div className="desplegables-itemDetail">
+            )}
+            <div className="desplegables-itemDetail">
+              {item.largos && item.largos.length > 0 && (
                 <div className="largos">
                   <p>Largos disponibles:</p>
                   <select
@@ -73,6 +82,8 @@ const ItemDetail = ({ item }) => {
                     ))}
                   </select>
                 </div>
+              )}
+              {item.medidas && item.medidas.length > 0 && (
                 <div className="medidas">
                   <p>Medidas disponibles:</p>
                   <select
@@ -87,21 +98,22 @@ const ItemDetail = ({ item }) => {
                     ))}
                   </select>
                 </div>
-              </div>
-            </div>
-            <div className="item-count-container">
-              <ItemCount
-                cantidad={cantidad}
-                handleSumar={handleSumar} 
-                handleRestar={handleRestar}
-                handleAgregar={() => {
-                  agregarAlCarrito(item, cantidad);
-                }}
-              />
+              )}
             </div>
           </div>
         </div>
       </div>
+      <div className="item-count-container">
+        <ItemCount
+          cantidad={cantidad}
+          handleSumar={handleSumar}
+          handleRestar={handleRestar}
+          handleAgregar={() => {
+            agregarAlCarrito(item, cantidad);
+          }}
+        />
+      </div>
+    </div>
   );
 };
 
