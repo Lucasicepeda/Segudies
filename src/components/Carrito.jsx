@@ -22,8 +22,8 @@ const Carrito = () => {
                     <img className="imgItemCarrito" src={prod.images[0]} alt="prod.imagen"/>
                     <div className="infoItemCarrito">
                         <h3>{prod.titulo}</h3>
-                        {/* <p>Precio unitario:  ${prod.precio}</p>
-                        <p>Precio total:  ${prod.precio * prod.cantidad}</p> */}
+                        {prod.largos && <p>Largo: {prod.largos}</p>}
+                        {prod.medidas && <p>Medida: {prod.medidas}</p>}
                         <p>Cantidad: {prod.cantidad}</p>
                     </div>
                 </div>
