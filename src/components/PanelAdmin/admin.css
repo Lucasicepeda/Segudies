@@ -1,5 +1,6 @@
 .productsList {
     padding: 0px 3vw;
+    
 }
 
 .productsAdmin {
@@ -172,3 +173,45 @@ input[name="titulo"] {
     text-transform: uppercase;
   }
   
+  .signIn-btn-container{
+    margin: 150px ;
+    display: flex;
+    justify-content: center;
+  }
+
+
+  .signIn-btn, .signOut-btn{
+    background-color: #FFC800;
+    border: 0;
+    width: max-content;
+    color: black;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1;
+    border: 2px solid #FFC800;
+    transition: .2s;
+    padding: 10px;
+}
+
+.signOut-btn{
+    margin-top: 20px;
+    background-color:#ffffff;
+    border: 3px solid #bb1010;
+    color: black;
+    margin-left: auto;
+}
+
+.signOut-btn:hover{
+    background-color: #bb1010;
+    color:#ffffff;
+
+}
+
+.signIn-btn:hover{
+    background-color: white;
+    color: black;
+}

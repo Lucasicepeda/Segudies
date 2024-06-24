@@ -3,6 +3,7 @@ import { auth, googleProvider } from '../../firebase/config';
 import { signInWithPopup } from 'firebase/auth';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import './admin.css';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -23,8 +24,8 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <button onClick={signInWithGoogle}>Sign in with Google</button>
+    <div className='signIn-btn-container'>
+      <button className='signIn-btn' onClick={signInWithGoogle}>Iniciar sesion de administrador</button>
     </div>
   );
 };

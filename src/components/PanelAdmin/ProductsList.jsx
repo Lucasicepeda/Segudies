@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { collection, deleteDoc, getDocs, doc } from "firebase/firestore";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { db, coleccionFirebase } from "../../firebase/config";
 import DataTable from "react-data-table-component";
 import { Link } from "react-router-dom";
@@ -8,9 +8,8 @@ import editIcon from "./assetsAdmin/editIcon.svg";
 import borrarIcon from "./assetsAdmin/borrarIcon.svg";
 import customStyles from "./customStyles";
 import "./admin.css";
-import { auth } from '../../firebase/config';
-import { signOut } from 'firebase/auth';
-
+import { auth } from "../../firebase/config";
+import { signOut } from "firebase/auth";
 
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -28,7 +27,7 @@ const ProductsList = () => {
         ...doc.data(),
         id: doc.id,
         editar: <img src={editIcon} alt="Editar" className="edit-icon" />,
-        borrar: <img src={borrarIcon} alt="Borrar" className="borrar-icon" />
+        borrar: <img src={borrarIcon} alt="Borrar" className="borrar-icon" />,
       }));
       setProductosFiltrados(productosData);
       setRecords(productosData);
@@ -44,37 +43,40 @@ const ProductsList = () => {
   const columns = [
     {
       name: "Titulo",
-      selector: row => row.titulo,
+      selector: (row) => row.titulo,
       sortable: true,
-      width: '40vw',
-      cell: row => <div className="custom-column-title">{row.titulo}</div>, // Agregar clase CSS personalizada para el título
-
+      width: "40vw",
+      cell: (row) => <div className="custom-column-title">{row.titulo}</div>, // Agregar clase CSS personalizada para el título
     },
     {
       name: "Marca",
-      selector: row => row.marca,
+      selector: (row) => row.marca,
       sortable: true,
-      width: '20vw',
-      cell: row => <div className="custom-column-marca">{row.marca}</div>, // Agregar clase CSS personalizada para la marca
+      width: "20vw",
+      cell: (row) => <div className="custom-column-marca">{row.marca}</div>, // Agregar clase CSS personalizada para la marca
     },
     {
       name: "Categoría",
-      selector: row => row.categoria,
+      selector: (row) => row.categoria,
       sortable: true,
-      width: '20vw'
+      width: "20vw",
     },
     {
       name: "Editar",
-      selector: row => row.editar,
-      cell: row => <Link to={`/admin/edit/${row.id}`}><img src={editIcon} alt="Editar" className="edit-icon" /></Link>,
-      width: '7vw'
+      selector: (row) => row.editar,
+      cell: (row) => (
+        <Link to={`/admin/edit/${row.id}`}>
+          <img src={editIcon} alt="Editar" className="edit-icon" />
+        </Link>
+      ),
+      width: "7vw",
     },
     {
       name: "Borrar",
-      selector: row => row.borrar,
-      cell: row => (
-        <a 
-          href="#" 
+      selector: (row) => row.borrar,
+      cell: (row) => (
+        <a
+          href="#"
           onClick={(e) => {
             e.preventDefault(); // Previene la navegación predeterminada
             confirmDelete(row.id, row.titulo);
@@ -83,13 +85,13 @@ const ProductsList = () => {
           <img src={borrarIcon} alt="Borrar" className="borrar-icon" />
         </a>
       ),
-      width: '7vw'
+      width: "7vw",
     },
   ];
 
   const handleFilter = (event) => {
     const searchTerm = event.target.value.toLowerCase();
-    const filteredData = productosFiltrados.filter(row =>
+    const filteredData = productosFiltrados.filter((row) =>
       row.titulo.toLowerCase().includes(searchTerm)
     );
     setRecords(filteredData);
@@ -109,46 +111,52 @@ const ProductsList = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Eliminar"
+      confirmButtonText: "Eliminar",
     }).then(async (result) => {
       if (result.isConfirmed) {
         await deleteProduct(id);
         MySwal.fire({
           title: "Eliminado!",
           text: `El producto "${titulo}" fue eliminado correctamente`,
-          icon: "success"
+          icon: "success",
         }).then(() => {
-          navigate('/admin'); // Redirige después de actualizar la lista
+          navigate("/admin"); // Redirige después de actualizar la lista
         });
       }
     });
   };
 
+  // LOGOUT
+  const navigate = useNavigate();
 
-      // LOGOUT
-      const navigate = useNavigate();
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        navigate("/"); // Redirigir a la página de inicio de sesión después del cierre de sesión
+      })
+      .catch((error) => {
+        console.error("Error signing out: ", error);
+      });
+  };
 
-      const handleLogout = () => {
-        signOut(auth)
-          .then(() => {
-            navigate('/'); // Redirigir a la página de inicio de sesión después del cierre de sesión
-          })
-          .catch((error) => {
-            console.error("Error signing out: ", error);
-          });
-      };
-    
-          // LOGOUT
+  // LOGOUT
 
   return (
     <div className="productsList">
-                      <button onClick={handleLogout}>Cerrar sesión</button>
-
+      <button className="signOut-btn" onClick={handleLogout}>
+        Cerrar sesión
+      </button>
       <div className="header-table">
-        <div className='text-end'>
-          <input type="text" onChange={handleFilter} placeholder="Filtrar por título" />
+        <div className="text-end">
+          <input
+            type="text"
+            onChange={handleFilter}
+            placeholder="Filtrar por título"
+          />
         </div>
-        <Link to="./create" className="newProduct-btn">Nuevo Producto</Link>
+        <Link to="./create" className="newProduct-btn">
+          Nuevo Producto
+        </Link>
       </div>
       <div className="productsAdmin">
         {records.length === 0 ? (
