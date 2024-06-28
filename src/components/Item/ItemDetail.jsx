@@ -11,6 +11,8 @@
 
 //   const [cantidad, setCantidad] = useState(1);
 //   const [imagenIndex, setImagenIndex] = useState(0);
+//   const [selectedLargo, setSelectedLargo] = useState("");
+//   const [selectedMedida, setSelectedMedida] = useState("");
 
 //   const handleRestar = () => {
 //     cantidad > 1 && setCantidad(cantidad - 1);
@@ -26,6 +28,24 @@
 
 //   const mostrarImagenAnterior = () => {
 //     setImagenIndex((imagenIndex - 1 + item.images.length) % item.images.length);
+//   };
+
+//   const handleAgregarAlCarrito = () => {
+//     // if (item.largos && (selectedLargo === null || selectedLargo === "")) {
+//     //   alert("Por favor selecciona un largo.");
+//     //   return;
+//     // }
+//     // if (item.medidas && (selectedMedida === null || selectedMedida === "")) {
+//     //   alert("Por favor selecciona una medida.");
+//     //   return;
+//     // }
+
+//     const itemConSeleccion = {
+//       ...item,
+//       largos: item.largos ? selectedLargo : null,
+//       medidas: item.medidas ? selectedMedida : null
+//     };
+//     agregarAlCarrito(itemConSeleccion, cantidad);
 //   };
 
 //   return (
@@ -73,8 +93,12 @@
 //                   <select
 //                     name="selectLargo"
 //                     className="desplegable-largos"
-//                     defaultValue=""
+//                     value={selectedLargo}
+//                     onChange={(e) => setSelectedLargo(e.target.value)}
 //                   >
+//                     <option value="" disabled>
+//                       Seleccione un largo
+//                     </option>
 //                     {Object.values(item.largos).map((largos, index) => (
 //                       <option key={index} value={largos}>
 //                         {largos}
@@ -89,8 +113,12 @@
 //                   <select
 //                     name="selectMedida"
 //                     className="desplegable-medidas"
-//                     defaultValue=""
+//                     value={selectedMedida}
+//                     onChange={(e) => setSelectedMedida(e.target.value)}
 //                   >
+//                     <option value="" disabled>
+//                       Seleccione una medida
+//                     </option>
 //                     {Object.values(item.medidas).map((medidas, index) => (
 //                       <option key={index} value={medidas}>
 //                         {medidas}
@@ -108,9 +136,7 @@
 //           cantidad={cantidad}
 //           handleSumar={handleSumar}
 //           handleRestar={handleRestar}
-//           handleAgregar={() => {
-//             agregarAlCarrito(item, cantidad);
-//           }}
+//           handleAgregar={handleAgregarAlCarrito}
 //         />
 //       </div>
 //     </div>
@@ -152,15 +178,6 @@ const ItemDetail = ({ item }) => {
   };
 
   const handleAgregarAlCarrito = () => {
-    // if (item.largos && (selectedLargo === null || selectedLargo === "")) {
-    //   alert("Por favor selecciona un largo.");
-    //   return;
-    // }
-    // if (item.medidas && (selectedMedida === null || selectedMedida === "")) {
-    //   alert("Por favor selecciona una medida.");
-    //   return;
-    // }
-
     const itemConSeleccion = {
       ...item,
       largos: item.largos ? selectedLargo : null,
@@ -197,20 +214,39 @@ const ItemDetail = ({ item }) => {
               <p className="descripcion">{item.descripcion}</p>
             )}
             {item.marca && (
-              <p className="marca">Marca: {toCapital(item.marca)}</p>
+              <p className="marca">
+                <span className="detalle-titulo">Marca:</span> 
+                <span className="detalle-valor">{toCapital(item.marca)}</span>
+              </p>
             )}
-            {item.codigo && <p className="codigo">Codigo: {item.codigo}</p>}
-            {item.iva && <p className="iva">IVA: {item.iva}</p>}
+            {item.codigo && (
+              <p className="codigo">
+                <span className="detalle-titulo">Código:</span> 
+                <span className="detalle-valor">{item.codigo}</span>
+              </p>
+            )}
+            {item.iva && (
+              <p className="iva">
+                <span className="detalle-titulo">IVA:</span> 
+                <span className="detalle-valor">{item.iva}</span>
+              </p>
+            )}
             {item.material && (
-              <p className="material">Material: {item.material}</p>
+              <p className="material">
+                <span className="detalle-titulo">Material:</span> 
+                <span className="detalle-valor">{item.material}</span>
+              </p>
             )}
             {item.unidxcaja && (
-              <p className="UnidxCaja">Unidades x caja: {item.unidxcaja}</p>
+              <p className="UnidxCaja">
+                <span className="detalle-titulo">Unidades x caja:</span> 
+                <span className="detalle-valor">{item.unidxcaja}</span>
+              </p>
             )}
             <div className="desplegables-itemDetail">
               {item.largos && item.largos.length > 0 && (
                 <div className="largos">
-                  <p>Largos disponibles:</p>
+                  <span className="detalle-titulo">Largos disponibles:</span>
                   <select
                     name="selectLargo"
                     className="desplegable-largos"
@@ -218,7 +254,7 @@ const ItemDetail = ({ item }) => {
                     onChange={(e) => setSelectedLargo(e.target.value)}
                   >
                     <option value="" disabled>
-                      Seleccione un largo
+                      Largos disponibles
                     </option>
                     {Object.values(item.largos).map((largos, index) => (
                       <option key={index} value={largos}>
@@ -230,7 +266,7 @@ const ItemDetail = ({ item }) => {
               )}
               {item.medidas && item.medidas.length > 0 && (
                 <div className="medidas">
-                  <p>Medidas disponibles:</p>
+                  <span className="detalle-titulo">Medidas disponibles:</span>
                   <select
                     name="selectMedida"
                     className="desplegable-medidas"
@@ -249,16 +285,16 @@ const ItemDetail = ({ item }) => {
                 </div>
               )}
             </div>
-          </div>
-        </div>
-      </div>
       <div className="item-count-container">
         <ItemCount
           cantidad={cantidad}
           handleSumar={handleSumar}
           handleRestar={handleRestar}
           handleAgregar={handleAgregarAlCarrito}
-        />
+          />
+          </div>
+          </div>
+        </div>
       </div>
     </div>
   );

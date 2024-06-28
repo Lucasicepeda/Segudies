@@ -93,24 +93,6 @@ hr {
     width:95%;
 }
 
-.producto-detalle {
-    padding-block: 2rem;
-    display: flex;
-    grid-template-columns: 1fr 2fr;
-    gap: 4rem;
-    width: 80vw;
-    padding: 3vh 0 8vh 0;
-
-}
-
-.producto-detalle img {
-    width: 100%;
-}
-
-.producto-detalle-info h3 {
-    font-size: 2rem;
-}
-
 .producto .marca {
     font-size: 20px;
     color: #424242;
@@ -127,7 +109,7 @@ hr {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-top: 1rem;
+    margin-right: 20px;
     font-weight: 500;
 }
 
@@ -148,6 +130,12 @@ hr {
     transition: .2s;
 }
 
+.agregar-al-carrito, .enviar {
+    width: auto;
+    height: auto;
+    padding: 5px
+}
+
 .item-count button:hover, .agregar-al-carrito:hover, .enviar:hover {
     background-color: white;
     color: black;
@@ -155,8 +143,12 @@ hr {
 
 .item-count-container{
     display: flex;
-    flex-direction: column;
-    justify-content:end;
+}
+
+.item-count-container > div{
+    display: flex;
+    flex-direction:row;
+    margin-top: 20px;
 }
 
 .carritoVacio{
@@ -210,13 +202,6 @@ hr {
 
 .btnsComprar :first-child{
     margin-right: 20px;
-}
-
-.agregar-al-carrito, .enviar {
-    width: auto;
-    height: auto;
-    margin-top: 1rem;
-    padding: 0.8rem;
 }
 
 .formulario {
