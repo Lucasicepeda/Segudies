@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@vercel/speed-insights": "^1.0.10",
+    "browser-image-compression": "^2.0.2",
     "firebase": "^10.6.0",
     "google-auth-library": "^9.6.3",
     "googleapis": "^133.0.0",
