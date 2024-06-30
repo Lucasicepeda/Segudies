@@ -26,84 +26,78 @@
     justify-content: space-between;
     
 }
----------------------------------------------------
 
-  .imagenes-container {
-    overflow: hidden;
-    position: relative;
-    width: 450px;
-    height: auto;
-  }
-  
-  .imagenes-container img {
-    width: 450px;
-    height: auto;
-  }
-  .no-image{
-    display: none;
-  }
-  .imagen-visible {
-    display: block;
-  }
-  
-  .botones-container {
-    position: absolute;
-    top: 50%;
-    width: 450px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .boton {
-    background-color: #ffffff00;
-    border: 0px solid #ccc; 
-    border-radius: 5px;
-    cursor: pointer;    
-    margin: 0 10px;
-  }
-  .boton img {
-    width: 18px;
-  }
-
-  .atras-btn{
-    width: 50px;
-    margin: 20px 0px 0px 30px;
-  }
-
-  p.notProduct{
-    font-size: 30px;
-    text-align: center;
-    margin: 10vh auto;
-  }
-
-  .titulo{
-    text-transform: uppercase;
-  }
-
-  .detalles-container{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 30vw
-  }
-
-  .desplegables-itemDetail {
-    display: flex;
-    flex-direction: column;
-    gap: 15px
-  }
-
-  /* .desplegables-itemDetail select{
-    margin-top: 10px;
-  } */
-
-  select[name="selectLargo"], select[name="selectMedida"]  {
-    border: 1px black solid;
-    padding: 0px 5px;
-    margin-bottom: 5px;
+.imagenes-container {
+  overflow: hidden;
+  position: relative;
+  width: 450px;
+  height: 450px;
 }
 
+.imagenes-container img {
+  width: 450px;
+  height: auto;
+}
+.no-image{
+  display: none;
+}
+.imagen-visible {
+  display: block;
+}
+
+.botones-container {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  padding: 0 10px;
+}
+
+.boton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.boton img {
+  width: 18px;
+}
+.atras-btn{
+  width: 50px;
+  margin: 20px 0px 0px 30px;
+}
+
+p.notProduct{
+  font-size: 30px;
+  text-align: center;
+  margin: 10vh auto;
+}
+
+.titulo{
+  text-transform: uppercase;
+}
+
+.detalles-container{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 30vw
+}
+
+.desplegables-itemDetail {
+  display: flex;
+  flex-direction: column;
+  gap: 15px
+}
+
+select[name="selectLargo"], select[name="selectMedida"]  {
+  border: 1px black solid;
+  padding: 0px 5px;
+  margin-bottom: 5px;
+}
 
 .detalle-titulo {
   font-weight: bold;
@@ -129,5 +123,4 @@
 .largos, .medidas{
   display: flex;
   align-items: center;
-  ;
 }

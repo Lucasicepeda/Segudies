@@ -31,9 +31,10 @@ const Buscador = () => {
     const handleProductSelect = () => {
         setSearchTerm(''); // Limpiar el término de búsqueda al seleccionar un producto
     };
-    
+
     const filteredProducts = products.filter(product =>
-        product.titulo.toLowerCase().includes(searchTerm.toLowerCase())
+        product.titulo.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.marca?.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     return (
@@ -57,7 +58,7 @@ const Buscador = () => {
                             filteredProducts.map(product => (
                                 <li key={product.id}>
                                     <Link to={`item/${product.id}`} onClick={handleProductSelect}>
-                                        {product.titulo}
+                                        {product.titulo} - {product.marca}
                                     </Link>
                                 </li>
                             ))
@@ -69,7 +70,6 @@ const Buscador = () => {
             </div>
         </div>
     );
-
 };
 
 export default Buscador;

@@ -10,6 +10,7 @@ import customStyles from "./customStyles";
 import "./admin.css";
 import { auth } from "../../firebase/config";
 import { signOut } from "firebase/auth";
+import BarLoader from "react-spinners/BarLoader";
 
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -160,7 +161,16 @@ const ProductsList = () => {
       </div>
       <div className="productsAdmin">
         {records.length === 0 ? (
-          <p>No existen productos disponibles</p>
+          <div className="barLoader">
+            <BarLoader
+            color="#edb300"
+            cssOverride={{}}
+            height={4}
+            loading
+            speedMultiplier={2}
+            width={400}
+            />
+          </div>
         ) : (
           <DataTable
             className="dataTable"

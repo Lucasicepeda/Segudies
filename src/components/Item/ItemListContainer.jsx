@@ -5,6 +5,7 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { db, coleccionFirebase } from "../../firebase/config";
 import atrasBtn from "../../assets/atrasBtn.svg";
 import Paginador from "../Paginador/Paginador.jsx";
+import BarLoader from "react-spinners/BarLoader";
 
 const ItemListContainer = () => {
     const [productos, setProductos] = useState([]);
@@ -38,7 +39,17 @@ const ItemListContainer = () => {
         <div>
             <Link to="/"><img className="atras-btn" src={atrasBtn} alt="atras"/></Link>   
             {productos.length === 0 ? (
-                <p className="notProduct">No existen productos de la marca {marca}</p>
+                // <p className="notProduct">No existen productos de la marca {marca}</p>
+                <div className="barLoader">
+                    <BarLoader
+                    color="#edb300"
+                    cssOverride={{}}
+                    height={4}
+                    loading
+                    speedMultiplier={2}
+                    width={400}
+                    />
+                </div>
             ) : (
                 <>
                     <ItemList productos={currentProducts} titulo={titulo} />

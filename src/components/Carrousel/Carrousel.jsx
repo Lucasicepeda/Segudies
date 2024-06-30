@@ -26,16 +26,14 @@ const Carrousel = () => {
       {[...Array(3)].map((_, slideIndex) => (
         <div key={slideIndex} className="logos-slide">
           {images.map((image, index) => (
-            <Link key={index} to={`/productos/${image.alt}`} >
+            <Link key={index} to={`/productos/${image.alt.toUpperCase()}`} >
               <img src={image.src} alt={image.alt} />
             </Link>
           ))}
         </div>
       ))}
     </div>
-
   );
 }
 
 export default Carrousel;
-

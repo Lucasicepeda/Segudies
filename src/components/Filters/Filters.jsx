@@ -4,6 +4,8 @@ import { db, coleccionFirebase } from "../../firebase/config";
 import Item from "../Item/Item";
 import Paginador from "../Paginador/Paginador";
 import './filters.css';
+import BarLoader from "react-spinners/BarLoader";
+
 
 const Filters = () => {
     const [marcas, setMarcas] = useState([]);
@@ -84,11 +86,21 @@ const Filters = () => {
             </div>
             <div className="productos">
                 {currentProducts.length === 0 ? (
-                    <p>No existen productos de la marca {marcaSeleccionada}</p>
+                    <div className="barLoader">
+                        <BarLoader
+                        color="#edb300"
+                        cssOverride={{}}
+                        height={4}
+                        loading
+                        speedMultiplier={2}
+                        width={400}
+                        />
+                    </div>
                 ) : (
                     currentProducts.map((producto) => <Item key={producto.id} producto={producto} />)
+                   
                 )}
-            </div>
+                </div>
             {productosFiltrados.length > productsPerPage && (
                 <Paginador
                     productosFiltrados={productosFiltrados}
