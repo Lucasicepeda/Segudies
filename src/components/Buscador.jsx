@@ -33,7 +33,7 @@ const Buscador = () => {
     };
 
     const filteredProducts = products.filter(product =>
-        product.titulo.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.titulo?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         product.marca?.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
