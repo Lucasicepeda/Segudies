@@ -6,7 +6,7 @@ import Carrousel from "./components/Carrousel/Carrousel";
 import Filters from "./components/Filters/Filters.jsx";
 import Footer from "./components/Footer/Footer";
 import ProductsList from "./components/PanelAdmin/ProductsList.jsx";
-import CrudProduct from "./components/PanelAdmin/CrudProduct.jsx";
+// import CrudProduct from "./components/PanelAdmin/CrudProduct.jsx";
 import Edit from "./components/PanelAdmin/Edit.jsx";
 import Create from "./components/PanelAdmin/Create.jsx";
 import ItemDetailContainer from "./components/Item/ItemDetailContainer";
