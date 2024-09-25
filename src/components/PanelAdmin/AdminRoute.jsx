@@ -3,7 +3,7 @@ import { auth } from '../../firebase/config';
 import { Navigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const allowedEmails = ["lucas.cepeda2@gmail.com", "segudies10@gmail.com"]; // lista de emails permitidos
+const allowedEmails = ["segudies10@gmail.com"]; // lista de emails permitidos
 
 const AdminRoute = ({ children }) => {
   const [loading, setLoading] = useState(true);

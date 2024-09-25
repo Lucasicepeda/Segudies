@@ -20,7 +20,7 @@ const ProductsList = React.memo(() => {
 
   const fetchProducts = async (page) => {
     setLoading(true);
-    let productosRef = collection(db, coleccionFirebase);
+    const productosRef = collection(db, coleccionFirebase);
 
     // Consulta para la página actual
     let productosQuery;
